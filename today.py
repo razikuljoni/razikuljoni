@@ -148,25 +148,32 @@ def rest_star_total():
     page = 1
     while True:
         request = requests.get(
-            "https://api.github.com/user/repos",
+            f"https://api.github.com/users/{USER_NAME}/repos",
             params={
-                "affiliation": "owner",
-                "visibility": "public",
+                "type": "owner",
                 "per_page": 100,
                 "page": page,
             },
             headers={**HEADERS, "Accept": "application/vnd.github+json"},
         )
         if request.status_code != 200:
-            raise Exception(
-                "rest_star_total() failed with",
-                request.status_code,
-                request.text,
+            request = requests.get(
+                "https://api.github.com/user/repos",
+                params={
+                    "affiliation": "owner",
+                    "visibility": "public",
+                    "per_page": 100,
+                    "page": page,
+                },
+                headers={**HEADERS, "Accept": "application/vnd.github+json"},
             )
+            if request.status_code != 200:
+                print(f"rest_star_total() request returned status {request.status_code}")
+                return total
         batch = request.json()
-        if not batch:
+        if not batch or not isinstance(batch, list):
             break
-        total += sum(int(repo["stargazers_count"]) for repo in batch)
+        total += sum(int(repo.get("stargazers_count", 0)) for repo in batch if isinstance(repo, dict))
         if len(batch) < 100:
             break
         page += 1

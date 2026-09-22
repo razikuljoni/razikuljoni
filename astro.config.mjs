@@ -16,8 +16,6 @@ export default defineConfig({
   site: 'https://razikuljoni.xyz',
   output: 'server',
   adapter: vercel({
-    imageService: true,
-    edgeMiddleware: false,
     webAnalytics: { enabled: false },
   }),
   integrations: [
