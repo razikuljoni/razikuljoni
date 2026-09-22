@@ -1,0 +1,11 @@
+.codegraph
+.opencode
+.claude
+.agents
+.git
+cache
+local.db
+local.db-journal
+*.py
+*.mjs
+*.svg

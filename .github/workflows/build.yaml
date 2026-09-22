@@ -55,16 +55,16 @@ jobs:
 
       - name: Update README file
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          USER_NAME: ${{ secrets.USER_NAME || 'swadhinbiswas' }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          USER_NAME: ${{ secrets.USER_NAME || 'razikuljoni' }}
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         run: python today.py
 
       - name: Commit
         run: |-
-          git config --global user.email "swadhinbiswas.cse@gmail.com"
-          git config --global user.name "Swadhin Biswas"
+          git config --global user.email "razikuljoni@gmail.com"
+          git config --global user.name "MD Razikul Islam Joni"
           git add .
           git diff --cached --quiet && echo "No changes to commit" || {
             git commit -m "chore(readme): auto-update stats $(date -u +%F)"

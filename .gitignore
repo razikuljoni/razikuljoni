@@ -68,3 +68,4 @@ hydrate*.mjs
 # Debug/utility scripts
 speed_test.py
 *_test.py
+.env*
