@@ -8,16 +8,10 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
-// https://astro.build/config
-// Public pages declare `export const prerender = true` so they're statically
-// generated and served from the edge — instant TTFB. The /cat admin and
-// /api routes stay on-demand (SSR) so the contact form and CMS work.
 export default defineConfig({
   site: 'https://razikuljoni.xyz',
   output: 'server',
-  adapter: vercel({
-    webAnalytics: { enabled: false },
-  }),
+  adapter: vercel(),
   integrations: [
     mdx({
       remarkPlugins: [remarkMath],
@@ -47,23 +41,18 @@ export default defineConfig({
         return item;
       },
     }),
-
   ],
   build: {
     inlineStylesheets: 'auto',
     assets: '_a',
   },
   image: {
-    // Admin-entered content can reference any https image host; authorize all
-    // so Vercel's /_vercel/image optimizer never 400s on a new host.
     remotePatterns: [{ protocol: 'https' }],
   },
   vite: {
     plugins: [tailwindcss()],
     css: { devSourcemap: false },
-    build: { sourcemap: false, cssMinify: 'lightningcss' },
-server:{
-allowedHosts:true,},
+    build: { sourcemap: false },
   },
   compressHTML: true,
   prefetch: {
