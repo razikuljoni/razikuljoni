@@ -79,6 +79,9 @@
     ],
     "public-hoist-pattern": [
       "*"
-    ]
+    ],
+    "overrides": {
+      "astro": "$astro"
+    }
   }
 }
