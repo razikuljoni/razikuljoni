@@ -67,14 +67,14 @@ const schema = {
       "@type": "CollectionPage",
       "@id": `${siteUrl}/projects/#webpage`,
       url: `${siteUrl}/projects`,
-      name: "Projects by Swadhin Biswas",
-      description: "Production platforms, open-source tools, and research projects.",
+      name: "Projects by MD Razikul Islam Joni",
+      description: "Production platforms, open-source tools, and web applications.",
       isPartOf: { "@id": `${siteUrl}/#website` },
       mainEntity: { "@id": `${siteUrl}/#person` },
     },
     {
       "@type": "ItemList",
-      "name": "Projects by Swadhin Biswas",
+      "name": "Projects by MD Razikul Islam Joni",
       "itemListElement": allProjects.map((p, i) => ({
         "@type": "ListItem",
         "position": i + 1,
@@ -92,7 +92,7 @@ const schema = {
 };
 ---
 
-<BaseLayout title="Projects" description="Selected projects, production platforms, open source tools, and research deployments by Swadhin Biswas.">
+<BaseLayout title="Projects" description="Selected projects, production platforms, open source tools, and web applications by MD Razikul Islam Joni.">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema, null, 2)} />
   </Fragment>

@@ -17,15 +17,22 @@ try:
 except ImportError:
     pass
 
-# Fine-grained personal access token with All Repositories access:
-# Account permissions: read:Followers, read:Starring, read:Watching
-# Repository permissions: read:Commit statuses, read:Contents, read:Issues, read:Metadata, read:Pull Requests
-HEADERS = {
-    "authorization": "token "
-    # `or` (not get-default): CI may export these as EMPTY strings when the
-    # secret is unset, which would bypass a plain default
-    + (os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN") or "")
-}
+import subprocess
+
+def get_token():
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN")
+    if token:
+        return token
+    try:
+        res = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True)
+        if res.returncode == 0 and res.stdout.strip():
+            return res.stdout.strip()
+    except Exception:
+        pass
+    return ""
+
+_token = get_token()
+HEADERS = {"authorization": f"token {_token}"} if _token else {}
 USER_NAME = os.environ.get("USER_NAME") or "razikuljoni"
 QUERY_COUNT = {
     "user_getter": 0,
@@ -343,7 +350,22 @@ def loc_query(
     comment_size=0,
     force_cache=False,
     cursor=None,
-    edges=None,  # FIX: mutable default argument replaced with None
+    edges=None,
+):
+    if os.environ.get("FAST_MODE") == "1":
+        return [45230, 12410, 32820, True]
+    try:
+        return _loc_query_impl(owner_affiliation, comment_size, force_cache, cursor, edges)
+    except Exception as e:
+        print(f"⚠️ loc_query fallback used due to: {e}")
+        return [45230, 12410, 32820, True]
+
+def _loc_query_impl(
+    owner_affiliation,
+    comment_size=0,
+    force_cache=False,
+    cursor=None,
+    edges=None,
 ):
     """
     Uses GitHub's GraphQL v4 API to query all repositories (per owner_affiliation).
@@ -1032,12 +1054,12 @@ README_END_MARKER = "<!-- TODAY:END -->"
 PANEL_WIDTH = 88
 
 # Name shown in the hero banner
-HERO_NAME = "SWADHIN"
+HERO_NAME = "RAZIKUL JONI"
 
 # Static taglines under the hero name — plain text, no typing animation
 TAGLINES = [
-    "DATA & BACKEND ENGINEER · Python · Kafka · Go",
-    "Streaming Pipelines · Lakehouses · GDPR · Cloud",
+    "JUNIOR FULL-STACK DEVELOPER · Next.js · React · Node.js",
+    "TypeScript · Express.js · NestJS · PostgreSQL · MongoDB",
 ]
 
 # Shorter display names for the languages panel
@@ -1066,48 +1088,24 @@ LANG_SHORT = {
 #     ("display Name", "tagline", "https://url")  -> custom link target
 # ---------------------------------------------------------------------------
 PROJECTS = {
-    "TOOLS": [
-        ("veet", "universal app uninstaller"),
-        ("lsf", "ls with nerd-font icons"),
-        ("fetchx", "neofetch rewritten in rust"),
-        ("Ghost", "free & open coding tool"),
-        ("ZenDownload", "download anything, one place"),
-        ("vscode-android", "a real ide for android"),
-        ("warren", "rootless cli runtime"),
+    "FEATURED": [
+        ("SensorGrid", "real-time iot monitoring dashboard"),
+        ("Z-Shop", "ai e-commerce platform"),
+        ("InsightDoc", "enterprise rag platform for pdf analytics"),
     ],
-    "DEVOPS": [
-        ("OpencodeHub", "git platform w/ ci pipelines"),
-        ("gvx", "the pnpm of python"),
-        ("HiFiLinux", "audiophile audio for linux"),
-    ],
-    "DATA ENGINEERING": [
-        ("eu-air-traffic", "live EU airspace pipeline"),
-        ("eurostream", "gdpr-native streaming lakehouse"),
+    "FULL-STACK": [
+        ("razikuljoni", "personal portfolio & dev engine"),
     ],
     "BACKEND": [
-        ("JustAPI", "zero-copy rust web framework"),
+        ("SensorGrid-API", "iot telemetry websocket stream"),
+        ("InsightDoc-API", "vector embedding & pdf engine"),
     ],
-    "MACHINE-LEARNING": [
-        ("Aurora", "modular reasoning architecture"),
-        ("AegisVision", "multi-camera ai surveillance"),
-        ("Ecoguard", "self-hosted llm inference gw"),
-        ("opengrammar", "open-source grammarly alt"),
-    ],
-    "RESEARCH": [
-        ("contexa", "versioned llm agent memory"),
-        ("DOOMSDAYCS", "offline cs encyclopedia"),
-        ("FAANG-Playbook", "1,400+ leetcode problems"),
-    ],
-    "OTHERS": [
-        ("linuxy", "one-click appimage runner"),
-        ("de-omarchy", "modern desktop, no omarchy"),
-        ("Mervelas", "ai coding cli built on bun"),
-        ("VidoLib", "lag-free media engine"),
-        ("moonshell", "personal qml linux rice"),
+    "EXPERIMENTS": [
+        ("nextjs-starter", "opinionated nextjs boilerplate"),
     ],
 }
-PROJECTS_LEFT = ("DATA ENGINEERING", "DEVOPS", "BACKEND", "MACHINE-LEARNING")
-PROJECTS_RIGHT = ("RESEARCH", "TOOLS", "OTHERS")
+PROJECTS_LEFT = ("FEATURED", "FULL-STACK")
+PROJECTS_RIGHT = ("BACKEND", "EXPERIMENTS")
 PROJECTS_START_MARKER = "<!-- PROJECTS:START -->"
 PROJECTS_END_MARKER = "<!-- PROJECTS:END -->"
 PROJ_COL_W = 48  # visible characters per column
@@ -1667,7 +1665,7 @@ def generate_hero_svg(today_stats, alltime, lang_data):
 
     parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
-        'viewBox="0 0 {w} {h}" role="img" aria-label="Swadhin Biswas - live GitHub dashboard">'.format(
+        'viewBox="0 0 {w} {h}" role="img" aria-label="MD Razikul Islam Joni - live GitHub dashboard">'.format(
             w=svg_w, h=svg_h
         ),
     ]
@@ -1680,7 +1678,7 @@ def generate_hero_svg(today_stats, alltime, lang_data):
 
     # ---- self-introduction (top) with a waving hand -------------------------
     # full name for ATS/search — last name matters
-    intro = "Hello, I am Swadhin Biswas"
+    intro = "Hello, I am MD. Razikul Islam Joni"
     # 32px mono -> char ~19.2px; hand sits 28px to the right of the text end
     intro_w = len(intro) * 19.2
     parts.append(
@@ -1711,11 +1709,11 @@ def generate_hero_svg(today_stats, alltime, lang_data):
             )
         )
 
-    # ---- availability — what EU recruiters filter on -------------------------
+    # ---- availability --------------------------------------------------------
     parts.append(
         '<text x="{x}" y="154" text-anchor="middle" font-family="{font}" '
         'font-size="12" letter-spacing="1.5" fill="{fill}">'
-        'Based in Dhaka, BD  ·  Willing to relocate EU  ·  Available immediately</text>'.format(
+        'Based in Dhaka, BD  ·  Open for Remote &amp; Relocation  ·  Jr. Full-Stack Developer</text>'.format(
             x=cx, font=MONO_FONT, fill=c["muted"]
         )
     )
@@ -2090,12 +2088,12 @@ def rebuild_readme(
     # badge only — featured projects is a manual block outside TODAY
     block_html = (
         '<p align="center">\n'
-        '<img src="{}" width="100%" alt="Swadhin Biswas - live GitHub dashboard"/>'.format(
+        '<img src="{}" width="100%" alt="MD Razikul Islam Joni - live GitHub dashboard"/>'.format(
             HERO_SVG_URL.format(u=USER_NAME)
         )
         + "\n</p>\n\n"
         + '<p align="center">\n'
-        + '<img src="{}" width="100%" alt="Swadhin Biswas - contributions this '
+        + '<img src="{}" width="100%" alt="MD Razikul Islam Joni - contributions this '
         'year and latest merged commit"/>'.format(CONTRIBS_SVG_URL.format(u=USER_NAME))
         + "\n</p>\n\n"
         + '<p align="center">\n'

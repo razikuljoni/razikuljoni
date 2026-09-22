@@ -1,11 +1,19 @@
 <!-- TODAY:START -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/razikuljoni/razikuljoni/main/hero.svg" width="100%" alt="MD Razikul Islam Joni - live GitHub dashboard"/>
+<img src="https://raw.githubusercontent.com/razikuljoni/razikuljoni/main/hero.svg" width="100%" alt="MD Razikul Islam Joni - live GitHub dashboard"/>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/razikuljoni/razikuljoni/main/contribs.svg" width="100%" alt="MD Razikul Islam Joni - contributions this year and latest merged commit"/>
+<img src="https://raw.githubusercontent.com/razikuljoni/razikuljoni/main/contribs.svg" width="100%" alt="MD Razikul Islam Joni - contributions this year and latest merged commit"/>
 </p>
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=razikuljoni&label=profile+views&color=0d1117&style=for-the-badge" alt="profile views - live counter"/>
+</p>
+
+<!-- the badge above is real time: komarev increments it on every view.
+     the hero and contribution SVGs refresh hourly via github actions. -->
+
 <!-- TODAY:END -->
 
 <h1 align="center">
