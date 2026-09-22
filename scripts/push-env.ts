@@ -1,8 +1,7 @@
-import { file } from "bun";
+import fs from "fs";
 import { execSync } from "child_process";
 
-const envFile = file(".env");
-const text = await envFile.text();
+const text = fs.readFileSync(".env", "utf-8");
 
 const lines = text.split("\n");
 

@@ -1,6 +1,3 @@
-// Database seed script - migrates static config to database
-// Run with: TURSO_DATABASE_URL="file:local.db" bun run src/db/seed.ts
-
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 import {
@@ -46,12 +43,11 @@ const db = drizzle(client);
 // ── Safety guard ────────────────────────────────────────────────────────────
 const isRemote = !dbUrl.startsWith('file:');
 if (isRemote && !process.argv.includes('--force')) {
-  const existing = await db.select({ count: 1 }).from(projects).limit(1).catch(() => []);
+  const existing = await db.select().from(projects).limit(1).catch(() => []);
   if (existing.length > 0) {
     console.error(
-      '🚫 Refusing to seed: the remote database already has projects.\n' +
-      '   This would DELETE all production content.\n' +
-      '   If you really want a full reset, run: bun run src/db/seed.ts --force'
+      '🚫 Refusing to seed: remote database has data.\n' +
+      '   Run: pnpm run db:seed --force to override.'
     );
     process.exit(1);
   }

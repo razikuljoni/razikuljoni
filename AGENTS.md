@@ -16,27 +16,25 @@ Personal developer portfolio and site built for **MD Razikul Islam Joni** (Jr. F
 
 ```bash
 # Install dependencies
-bun install
+pnpm install
 
 # Start local development server
-bun run dev
+pnpm run dev
 
 # Production build
-bun run build
+pnpm run build
 
 # Preview production build locally
-bun run preview
+pnpm run preview
 
 # Drizzle ORM migrations & studio
-bun run db:generate     # Generate Drizzle migration files
-bun run db:push         # Push schema changes to database
-bun run db:studio       # Launch Drizzle Studio UI
-
-# Seed local database (file:local.db)
-TURSO_DATABASE_URL="file:local.db" bun run src/db/seed.ts
+pnpm run db:generate     # Generate Drizzle migration files
+pnpm run db:push         # Push schema changes to database
+pnpm run db:seed         # Seed database (TURSO_DATABASE_URL="file:local.db")
+pnpm run db:studio       # Launch Drizzle Studio UI
 
 # Deploy script
-bun run deploy          # Deploy to Vercel (vercel --prod)
+pnpm run deploy          # Deploy to Vercel (vercel --prod)
 ```
 
 ## Environment Setup

@@ -1,6 +1,3 @@
-// Migration: Enhance projects table with professional fields
-// Run with: bun run src/db/migrate-projects.ts
-
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 import { sql } from 'drizzle-orm';
