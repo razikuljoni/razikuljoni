@@ -4,8 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-pnpmfileChecksum: sha256-INI/YG/vcmicUU0Uc7Em3rUiiTzdAvbxvn+FXpjhzj0=
-
 importers:
 
   .:

@@ -71,6 +71,12 @@
   },
   "devDependencies": {},
   "pnpm": {
+    "onlyBuiltDependencies": [
+      "@libsql/client",
+      "@swc/core",
+      "esbuild",
+      "sharp"
+    ],
     "public-hoist-pattern": [
       "*astro*",
       "*vercel*",
