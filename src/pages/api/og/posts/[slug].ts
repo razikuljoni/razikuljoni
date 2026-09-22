@@ -26,10 +26,10 @@ export const GET: APIRoute = async ({ params }) => {
     description: post.description || "",
     meta: [
       new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", year: "numeric" }),
-      "swadhin.cv",
+      "razikuljoni.xyz",
     ],
     tags,
-    footer: "Swadhin Biswas · Data / Backend Engineer · swadhin.cv",
+    footer: "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.xyz",
   });
 
   return new Response(svg, {

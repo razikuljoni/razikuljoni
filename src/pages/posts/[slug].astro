@@ -13,8 +13,8 @@ const { slug } = Astro.params;
 if (!slug) return Astro.redirect("/404");
 
 const siteConfig = await getDynamicConfig();
-const blogOrigin = (siteConfig.blogUrl || "https://blog.swadhin.cv").replace(/\/$/, "");
-const siteUrl = (siteConfig.url || "https://swadhin.cv").replace(/\/$/, "");
+const blogOrigin = (siteConfig.blogUrl || "https://blog.razikuljoni.xyz").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || "https://razikuljoni.xyz").replace(/\/$/, "");
 
 // 1. Local post from the admin dashboard?
 let post: any = null;

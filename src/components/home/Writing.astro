@@ -16,7 +16,7 @@ interface BlogPost {
 }
 
 const siteConfig = await getDynamicConfig();
-const blogOrigin = (siteConfig.blogUrl || "https://blog.swadhin.cv").replace(/\/$/, "");
+const blogOrigin = (siteConfig.blogUrl || "https://blog.razikuljoni.xyz").replace(/\/$/, "");
 const blogBase = `${blogOrigin}/blog`;
 
 let cachedPostsMem: BlogPost[] | null = null;

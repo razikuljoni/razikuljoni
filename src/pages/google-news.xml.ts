@@ -9,8 +9,8 @@ const NEWS_WINDOW_HOURS = 48;
 
 export async function GET() {
   const siteConfig = await getDynamicConfig();
-  const siteUrl = (siteConfig.url || "https://swadhin.cv").replace(/\/$/, "");
-  const publicationName = siteConfig.name || siteConfig.author || "Swadhin Biswas";
+  const siteUrl = (siteConfig.url || "https://razikuljoni.xyz").replace(/\/$/, "");
+  const publicationName = siteConfig.name || siteConfig.author || "MD Razikul Islam Joni";
 
   const now = new Date();
   const windowStart = new Date(now.getTime() - NEWS_WINDOW_HOURS * 60 * 60 * 1000);

@@ -22,8 +22,8 @@ export const GET: APIRoute = async ({ params }) => {
     kicker: a.year ? `Achievement · ${a.year}` : "Achievement",
     title: a.name,
     description: a.description || "",
-    meta: a.url ? ["Proof & story on swadhin.cv"] : ["Story on swadhin.cv"],
-    footer: "Swadhin Biswas · Data / Backend Engineer · swadhin.cv",
+    meta: a.url ? ["Proof & story on razikuljoni.xyz"] : ["Story on razikuljoni.xyz"],
+    footer: "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.xyz",
   });
 
   return new Response(svg, {

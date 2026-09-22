@@ -8,7 +8,7 @@ import JsonLd from "../components/seo/JsonLd.astro";
 import { env } from "../lib/env";
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || env.siteUrl || "https://swadhin.cv").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
 
 async function safe<T>(q: Promise<T>, fallback: T): Promise<T> {
   try { return await q; } catch { return fallback; }

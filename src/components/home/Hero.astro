@@ -14,8 +14,8 @@ const heroMetrics = siteConfig.heroMetrics || [];
 const availability = siteConfig.bio?.availability || "";
 
 const hostPart = (() => {
-  try { return new URL(siteConfig.url).hostname.split(".")[0] || "swadhin"; }
-  catch { return "swadhin"; }
+  try { return new URL(siteConfig.url).hostname.split(".")[0] || "razikuljoni"; }
+  catch { return "razikuljoni"; }
 })();
 const terminalTitle = `guest@${hostPart}-desktop:~`;
 const termLines = [
@@ -29,7 +29,7 @@ const termLines = [
   <div class="hero-grid">
     <div class="hero-portrait reveal">
       <div class="portrait-frame">
-        <img src={siteConfig.profileImage || "/profile.jpg"} alt={author} class="portrait" loading="eager" decoding="async" fetchpriority="high" width="160" height="160" />
+        <img src={siteConfig.profileImage || "/profile.webp"} alt={author} class="portrait" loading="eager" decoding="async" fetchpriority="high" width="160" height="160" />
       </div>
     </div>
 

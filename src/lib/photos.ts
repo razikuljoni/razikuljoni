@@ -28,7 +28,7 @@ export interface PhotoItem {
   order?: number;
 }
 
-export const PHOTOGRAPHY_CDN_BASE = "https://cdn.swadhin.cv/photography/";
+export const PHOTOGRAPHY_CDN_BASE = "https://cdn.razikuljoni.xyz/photography/";
 
 export const defaultPhotosList: PhotoItem[] = [
   {

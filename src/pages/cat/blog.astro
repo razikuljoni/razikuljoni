@@ -13,7 +13,7 @@ const rows = await db.select().from(posts).orderBy(desc(posts.publishedAt));
     <button onclick="document.getElementById('add-form').classList.toggle('hidden')" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors text-sm">+ Add Post</button>
   </div>
   <p class="text-sm text-gray-400 mb-4">
-    Add a post that links to your article (blog.swadhin.cv, Medium, Dev.to), or write it here with markdown. Drafts stay hidden. Posts from blog.swadhin.cv are also fetched automatically.
+    Add a post that links to your article (blog.razikuljoni.xyz, Medium, Dev.to), or write it here with markdown. Drafts stay hidden. Posts from blog.razikuljoni.xyz are also fetched automatically.
   </p>
 
   <div id="add-form" class="hidden mb-6 p-4 rounded-xl border border-cyan-400/30 bg-cyan-400/5">
@@ -30,7 +30,7 @@ const rows = await db.select().from(posts).orderBy(desc(posts.publishedAt));
         </div>
         <div>
           <label class="block text-sm text-gray-400 mb-1">Article Link (external URL)</label>
-          <input type="url" name="externalUrl" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400" placeholder="https://blog.swadhin.cv/blog/my-article/" />
+          <input type="url" name="externalUrl" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400" placeholder="https://blog.razikuljoni.xyz/blog/my-article/" />
         </div>
         <div>
           <label class="block text-sm text-gray-400 mb-1">Published Date</label>

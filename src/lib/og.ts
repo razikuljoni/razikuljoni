@@ -22,7 +22,7 @@ export function ogSvg(o: OgOptions): string {
   const title = esc(o.title).slice(0, 40);
   const description = esc(o.description).slice(0, 110);
   const kicker = esc(o.kicker).slice(0, 30);
-  const footer = esc(o.footer || "Swadhin Biswas · Data / Backend Engineer · swadhin.cv");
+  const footer = esc(o.footer || "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.xyz");
   const meta = (o.meta || []).slice(0, 4).map(esc);
   const tags = (o.tags || []).slice(0, 3).map(esc);
 
@@ -71,7 +71,7 @@ export function ogSvg(o: OgOptions): string {
 
   ${metaLine}
 
-  <text x="68" y="540" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="600" fill="#F4F4F5">Swadhin Biswas</text>
+  <text x="68" y="540" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="600" fill="#F4F4F5">MD Razikul Islam Joni</text>
   <text x="68" y="572" font-family="JetBrains Mono, monospace" font-size="16" fill="#52525B">${footer}</text>
 </svg>`;
 }

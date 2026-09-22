@@ -52,7 +52,7 @@ const gallery = (() => { try { return JSON.parse(project.gallery || "[]"); } cat
 const projectDate = project.projectDate || project.createdAt || new Date().toISOString();
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || "https://swadhin.cv").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || "https://razikuljoni.xyz").replace(/\/$/, "");
 const canonicalUrl = `${siteUrl}/projects/${slug}/`;
 // Per-project branded OG image (SVG route); falls back to the site default
 const ogImage = `${siteUrl}/api/og/${slug}.svg`;

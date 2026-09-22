@@ -8,10 +8,10 @@ import { env } from "../lib/env";
 import GithubGraph from "../components/home/GithubGraph";
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || env.siteUrl || "https://swadhin.cv").replace(/\/$/, "");
-const author = siteConfig.author || "Swadhin Biswas";
-const githubUrl = siteConfig.links?.github || "https://github.com/swadhinbiswas";
-const githubUsername = githubUrl.split("/").pop() || "swadhinbiswas";
+const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
+const author = siteConfig.author || "MD Razikul Islam Joni";
+const githubUrl = siteConfig.links?.github || "https://github.com/razikuljoni";
+const githubUsername = githubUrl.split("/").pop() || "razikuljoni";
 
 const usesRows = await getUses();
 const grouped: Record<string, string[]> = {};

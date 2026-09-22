@@ -39,7 +39,7 @@ const all = await (async () => {
 const related = all.filter((a) => a.slug !== slug).slice(0, 2);
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || env.siteUrl || "https://swadhin.cv").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
 const canonicalUrl = `${siteUrl}/achievements/${slug}/`;
 
 const schema = {

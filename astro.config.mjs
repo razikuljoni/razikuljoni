@@ -13,7 +13,7 @@ import vercel from '@astrojs/vercel';
 // generated and served from the edge — instant TTFB. The /cat admin and
 // /api routes stay on-demand (SSR) so the contact form and CMS work.
 export default defineConfig({
-  site: 'https://swadhin.cv',
+  site: 'https://razikuljoni.xyz',
   output: 'server',
   adapter: vercel({
     imageService: true,
@@ -35,7 +35,7 @@ export default defineConfig({
       },
       serialize(item) {
         const url = item.url.replace(/\/$/, '');
-        if (url === 'https://swadhin.cv') {
+        if (url === 'https://razikuljoni.xyz') {
           item.changefreq = 'daily';
           item.priority = 1.0;
         } else if (url.includes('/projects') || url.includes('/research') || url.includes('/about') || url.includes('/skills')) {

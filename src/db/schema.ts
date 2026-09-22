@@ -90,7 +90,7 @@ export const posts = sqliteTable('posts', {
   title: text('title').notNull(),
   description: text('description').notNull(),
   content: text('content').notNull(), // Markdown content (used when no external_url)
-  externalUrl: text('external_url'), // Optional link to the article (blog.swadhin.cv, Medium, etc.)
+  externalUrl: text('external_url'), // Optional link to the article (blog.razikuljoni.xyz, Medium, etc.)
   publishedAt: integer('published_at', { mode: 'timestamp' }).notNull(),
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
   tags: text('tags').default('[]'), // JSON array

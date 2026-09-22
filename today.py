@@ -26,7 +26,7 @@ HEADERS = {
     # secret is unset, which would bypass a plain default
     + (os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN") or "")
 }
-USER_NAME = os.environ.get("USER_NAME") or "swadhinbiswas"
+USER_NAME = os.environ.get("USER_NAME") or "razikuljoni"
 QUERY_COUNT = {
     "user_getter": 0,
     "follower_getter": 0,
