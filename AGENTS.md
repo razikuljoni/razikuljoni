@@ -2,13 +2,17 @@
 
 Repository guidelines, architecture overview, developer commands, and codebase facts.
 
+**Branch:** `dev`
+**Current HEAD:** `e9da180` (dependency upgrade: Astro 7 & React 19, content collection migration)
+
 ## Overview
 
 Personal developer portfolio and site built for **MD Razikul Islam Joni** (Jr. Full-Stack Developer).
 
-- **Framework**: Astro 5 (hybrid SSR/static, `@astrojs/vercel` adapter, React 18 integration)
+- **Framework**: Astro 7 (hybrid SSR/static, `@astrojs/vercel` adapter, React 19 integration)
 - **Styling**: Tailwind CSS v4 via `@tailwindcss/vite`
-- **Database & ORM**: Turso / libSQL SQLite + Drizzle ORM (`src/db/schema.ts`)
+- **Database & ORM**: Turso / libSQL SQLite + Drizzle ORM (`src/db/schema.ts`, 28 tables)
+- **Content**: Astro content collections via `glob` loader (`src/content.config.ts`, collections defined there; legacy `src/content/config.ts` was removed)
 - **Config Architecture**: Dynamic configuration loaded from database via `getDynamicConfig()` (`src/lib/config.ts`), falling back to `PUBLIC_*` environment variables in `src/lib/env.ts` (`src/config/site.ts` is obsolete).
 - **Runtime**: Bun / Node.js
 
@@ -55,14 +59,16 @@ Create `.env` or `.env.local` using `.env.example`:
 ## Codebase Structure
 
 - `src/db/`: Drizzle ORM schema (`schema.ts`), connection (`index.ts`), and database seeder (`seed.ts`).
+- `src/content.config.ts`: Astro content collection definitions (`projects` via `glob` loader); source files in `src/content/projects/`.
 - `src/lib/`:
   - `config.ts`: Dynamic configuration fetcher (`getDynamicConfig`).
   - `env.ts`: Public environment variable mappings.
   - `loaders.ts`: Content and database entity loaders with caching.
-- `src/pages/`: Astro routes. `/cat/` routes contain the admin dashboard. `/api/` contains serverless API endpoints.
+- `src/pages/`: Astro routes. `/cat/` routes contain the admin dashboard (see `src/pages/cat/AGENTS.md`). `/api/` contains serverless API endpoints; `/api/admin/` holds CRUD endpoints for the dashboard.
 - `src/components/`: Modular React and Astro components (`home/`, `ui/`, `common/`).
 - `scripts/`: Maintenance scripts (`push-env.ts`, `apply-category-migration.mjs`).
 - `today.py`: Python script generating GitHub profile dashboard SVG cards (`hero.svg`, `contribs.svg`, `cosmos.svg`, etc.).
+- `wrangler.jsonc`: Secondary Cloudflare Workers deploy config (static-only since `main` entrypoint was removed; re-add `dist/server/entry.mjs` for SSR/API on CF).
 
 ## Guidelines for AI Agents
 
