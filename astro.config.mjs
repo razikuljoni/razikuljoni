@@ -13,10 +13,7 @@ export default defineConfig({
   output: 'static',
   adapter: cloudflare(),
   integrations: [
-    mdx({
-      remarkPlugins: [remarkMath],
-      rehypePlugins: [rehypeKatex],
-    }),
+    mdx(),
     react({
       include: ['**/components/**'],
     }),
@@ -53,6 +50,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
     css: { devSourcemap: false },
     build: { sourcemap: false },
+    optimizeDeps: {
+      entries: ['src/**/*.{js,mjs,ts,tsx,jsx}'],
+    },
   },
   compressHTML: true,
   prefetch: {
@@ -60,6 +60,8 @@ export default defineConfig({
     defaultStrategy: 'hover',
   },
   markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
     shikiConfig: { theme: 'github-dark-dimmed' },
   },
 });
