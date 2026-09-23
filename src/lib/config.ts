@@ -60,7 +60,7 @@ export interface DynamicSiteConfig {
     linkedin: string;
     twitter: string;
     youtube?: string;
-    [key: string]: string;
+    [key: string]: string | undefined;
   };
 
   navItems: Array<{ label: string; href: string; external?: boolean }>;
@@ -117,9 +117,102 @@ let cachedConfig: DynamicSiteConfig | null = null;
 let cacheTimestamp: number = 0;
 let inFlightPromise: Promise<DynamicSiteConfig> | null = null;
 const CACHE_TTL = 300 * 1000; // 5 minute in-memory cache
-const DEFAULT_SHORT_BIO = "";
-const DEFAULT_FOCUS_LABEL = "";
-const DEFAULT_RESEARCH_STATEMENT = "";
+
+const DEFAULT_SHORT_BIO = "Jr. Full-Stack Developer with 2+ years of experience building modern web applications, real-time IoT dashboards, and scalable APIs.";
+const DEFAULT_FOCUS_LABEL = "Jr. Full-Stack Developer";
+const DEFAULT_RESEARCH_STATEMENT = "Focused on modern frontend performance optimization, scalable micro-backends, and real-time streaming architectures.";
+
+const defaultSocials = [
+  { name: 'GitHub', url: 'https://github.com/razikuljoni', icon: 'github', footer: true },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/razikuljoni', icon: 'linkedin', footer: true },
+  { name: 'Email', url: 'mailto:razikuljoni@gmail.com', icon: 'email', footer: true },
+];
+
+const defaultExperiences = [
+  {
+    company: "HawkEyes Digital Monitoring Ltd.",
+    role: "Junior Frontend Developer",
+    url: "https://hawkeyesbd.com",
+    startDate: "2024-02-01",
+    endDate: "2026-04-01",
+    details: "Built interactive IoT monitoring dashboards, optimized map rendering for 10,000+ real-time markers, and implemented responsive React components.",
+  },
+];
+
+const defaultFeaturedProjects = [
+  {
+    name: "SensorGrid",
+    description: "Real-Time IoT Dashboard for monitoring 10,000+ connected sensors with sub-second WebSocket updates and geospatial mapping.",
+    url: "https://github.com/razikuljoni/sensorgrid",
+    github: "https://github.com/razikuljoni/sensorgrid",
+    image: undefined,
+    tags: ["React", "TypeScript", "WebSocket", "Tailwind CSS"],
+    featured: true,
+    stars: 12,
+  },
+  {
+    name: "Z Shop",
+    description: "AI-Powered E-Commerce Platform featuring personalized recommendations, dynamic pricing, and seamless checkout.",
+    url: "https://github.com/razikuljoni/z-shop",
+    github: "https://github.com/razikuljoni/z-shop",
+    image: undefined,
+    tags: ["Next.js", "Node.js", "PostgreSQL", "Prisma"],
+    featured: true,
+    stars: 8,
+  },
+  {
+    name: "InsightDoc",
+    description: "Enterprise RAG Platform for PDF Analytics with semantic vector search and automated document summarization.",
+    url: "https://github.com/razikuljoni/insightdoc",
+    github: "https://github.com/razikuljoni/insightdoc",
+    image: undefined,
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Python"],
+    featured: true,
+    stars: 15,
+  },
+];
+
+const defaultAchievements = [
+  { name: "Real-Time IoT Dashboard", icon: "zap", description: "Engineered real-time map & chart data stream handling 10,000+ live IoT devices." },
+  { name: "Enterprise RAG Search", icon: "search", description: "Implemented vector semantic search over PDF documents using Next.js & PostgreSQL." },
+  { name: "2,000+ GitHub Contributions", icon: "github", description: "Maintained active open-source contribution record across full-stack repositories." },
+];
+
+const defaultSkills = [
+  { name: "Next.js", category: "framework", description: "React Framework for Production" },
+  { name: "React", category: "framework", description: "UI Library" },
+  { name: "TypeScript", category: "language", description: "Typed JavaScript" },
+  { name: "Node.js", category: "framework", description: "JavaScript Runtime" },
+  { name: "Express.js", category: "framework", description: "Web Framework" },
+  { name: "PostgreSQL", category: "database", description: "Relational Database" },
+  { name: "MongoDB", category: "database", description: "NoSQL Database" },
+  { name: "Tailwind CSS", category: "framework", description: "Utility-first CSS" },
+  { name: "Docker", category: "devops", description: "Containerization" },
+  { name: "Zod", category: "general", description: "Schema Validation" },
+];
+
+const defaultHeroMetrics = [
+  { label: "Experience", value: "2+ Yrs", sub: "Web Development" },
+  { label: "Projects", value: "15+", sub: "Completed & Deployed" },
+  { label: "Contributions", value: "2,000+", sub: "GitHub Commits" },
+];
+
+const defaultBioObj = {
+  focusLabel: DEFAULT_FOCUS_LABEL,
+  short: DEFAULT_SHORT_BIO,
+  long: "Junior Full-Stack Developer specializing in Next.js, React, Node.js, Express, and PostgreSQL. Experienced in crafting high-performance dashboards, real-time WebSocket interfaces, and clean component architectures.",
+  intro: "Hi, I'm MD Razikul Islam Joni. I build web applications and digital experiences.",
+  story: "Passionate about full-stack engineering, clean code, and building products that solve real-world problems. Graduated with a B.Sc. in CSE from Green University of Bangladesh.",
+  quote: "First, solve the problem. Then, write the code.",
+  funFact: "Enthusiastic about open-source tools, system design, and building real-time interactive apps.",
+  researchStatement: DEFAULT_RESEARCH_STATEMENT,
+  roleInterests: "Full-Stack Developer, Frontend Engineer (React/Next.js), Backend Developer (Node.js/Express)",
+  summary: "Jr. Full-Stack Developer based in Dhaka, Bangladesh.",
+  currentFocus: "Next.js 15, React 19, TypeScript, PostgreSQL & Micro-backends",
+  currentlyBuilding: "Full-stack portfolio and real-time dashboard components",
+  seeking: "Full-Time Full-Stack or Frontend Developer roles (Local Dhaka or Remote)",
+  availability: "Available immediately",
+};
 
 /**
  * Split "Dhaka, Bangladesh" → { city: "Dhaka", country: "Bangladesh" }
@@ -272,19 +365,19 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       emails: buildEmails(settings.email || env.email, settings.email_alt_1, settings.email_alt_2),
       location: settings.location || env.location,
       timezone: settings.timezone || env.timezone,
-      profileImage: cleanValue(settings.profile_image),
-      sidebarTagline: cleanValue(settings.sidebar_tagline),
-      footerTagline: cleanValue(settings.footer_tagline),
-      contactBlurb: cleanValue(settings.contact_blurb),
-      usesPhilosophy: cleanValue(settings.uses_philosophy),
+      profileImage: cleanValue(settings.profile_image) || "/profile.webp",
+      sidebarTagline: cleanValue(settings.sidebar_tagline) || "Jr. Full-Stack Developer building modern web applications & real-time dashboards.",
+      footerTagline: cleanValue(settings.footer_tagline) || "Built with Astro, React & Tailwind CSS v4.",
+      contactBlurb: cleanValue(settings.contact_blurb) || "Email or message me for opportunities in full-stack web development, React/Next.js frontend, or Node.js backend projects.",
+      usesPhilosophy: cleanValue(settings.uses_philosophy) || "Clean component architecture, type-safety with TypeScript, modern database ORMs, and lightweight reactive state.",
       blogUrl: cleanValue(settings.blog_url),
-      aboutCtaTitle: cleanValue(settings.about_cta_title),
-      noticePeriod: cleanValue(settings.notice_period),
-      workAuthorization: cleanValue(settings.work_authorization),
-      relocationTargets: cleanValue(settings.relocation_targets),
-      englishLevel: cleanValue(settings.english_level),
-      meetingUrl: cleanValue(settings.meeting_url),
-      availabilityHours: cleanValue(settings.availability_hours),
+      aboutCtaTitle: cleanValue(settings.about_cta_title) || "Let's build something useful",
+      noticePeriod: cleanValue(settings.notice_period) || "Immediate / 15 days",
+      workAuthorization: cleanValue(settings.work_authorization) || "Open to local (Dhaka) and remote full-stack roles",
+      relocationTargets: cleanValue(settings.relocation_targets) || "Dhaka · Remote Worldwide",
+      englishLevel: cleanValue(settings.english_level) || "English (Professional Working Proficiency)",
+      meetingUrl: cleanValue(settings.meeting_url) || "https://linkedin.com/in/razikuljoni",
+      availabilityHours: cleanValue(settings.availability_hours) || "Available Sunday to Thursday daily",
 
       seo: {
         author: settings.author || env.siteName,
@@ -359,7 +452,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
               icon: s.icon,
               footer: s.footer || false,
             }))
-          : [],
+          : defaultSocials,
 
       experience:
         experiencesData.length > 0
@@ -372,7 +465,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
               endDate: e.endDate || undefined,
               details: e.details || undefined,
             }))
-          : [],
+          : defaultExperiences,
 
       featuredProjects:
         projectsData.length > 0
@@ -388,7 +481,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
                 featured: p.featured || false,
                 stars: p.stars || 0,
               }))
-          : [],
+          : defaultFeaturedProjects,
 
       achievements:
         achievementsData.length > 0
@@ -397,37 +490,37 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
               icon: a.icon,
               description: a.description,
             }))
-          : [],
+          : defaultAchievements,
 
-      skills: skillsData.length > 0 ? skillsData.map((s) => ({ name: s.name, category: s.category || undefined, description: s.description || undefined })) : [],
+      skills: skillsData.length > 0 ? skillsData.map((s) => ({ name: s.name, category: s.category || undefined, description: s.description || undefined })) : defaultSkills,
 
       testimonials: testimonialsData.length > 0
         ? testimonialsData.map((t) => ({ quote: t.quote, name: t.name, role: t.role }))
         : [],
       heroMetrics: heroMetricsData.length > 0
         ? heroMetricsData.map((m) => ({ label: m.label, value: m.value, sub: m.sub }))
-        : [],
+        : defaultHeroMetrics,
 
       highlights: settings.highlights
         ? settings.highlights.split(",").map((h: string) => h.trim()).filter(Boolean)
-        : [],
-      languages: settings.languages || "",
+        : ["Next.js & React 19", "Node.js & Express", "PostgreSQL & Drizzle ORM", "TypeScript", "Tailwind CSS v4"],
+      languages: settings.languages || "Bangla (Native), English (Professional)",
 
       bio: {
-        focusLabel,
-        short: shortBio,
-        long: bio.long || "",
-        intro: bio.intro || "",
-        story: bio.story || "",
-        quote: bio.quote || "",
-        funFact: bio.funFact || "",
-        researchStatement,
-        roleInterests: cleanValue(bio.roleInterests),
-        summary: cleanValue(bio.summary),
-        currentFocus: cleanValue(bio.currentFocus),
-        currentlyBuilding: cleanValue(bio.currentlyBuilding),
-        seeking: cleanValue(bio.seeking),
-        availability: cleanValue(bio.availability),
+        focusLabel: focusLabel || defaultBioObj.focusLabel,
+        short: shortBio || defaultBioObj.short,
+        long: bio.long || defaultBioObj.long,
+        intro: bio.intro || defaultBioObj.intro,
+        story: bio.story || defaultBioObj.story,
+        quote: bio.quote || defaultBioObj.quote,
+        funFact: bio.funFact || defaultBioObj.funFact,
+        researchStatement: researchStatement || defaultBioObj.researchStatement,
+        roleInterests: cleanValue(bio.roleInterests) || defaultBioObj.roleInterests,
+        summary: cleanValue(bio.summary) || defaultBioObj.summary,
+        currentFocus: cleanValue(bio.currentFocus) || defaultBioObj.currentFocus,
+        currentlyBuilding: cleanValue(bio.currentlyBuilding) || defaultBioObj.currentlyBuilding,
+        seeking: cleanValue(bio.seeking) || defaultBioObj.seeking,
+        availability: cleanValue(bio.availability) || defaultBioObj.availability,
       },
     };
 
@@ -454,24 +547,24 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       emails: buildEmails(env.email),
       location: env.location,
       timezone: env.timezone,
-      profileImage: "",
-      sidebarTagline: "",
-      footerTagline: "",
-      contactBlurb: "",
-      usesPhilosophy: "",
+      profileImage: "/profile.webp",
+      sidebarTagline: "Jr. Full-Stack Developer building modern web applications & real-time dashboards.",
+      footerTagline: "Built with Astro, React & Tailwind CSS v4.",
+      contactBlurb: "Email or message me for opportunities in full-stack web development, React/Next.js frontend, or Node.js backend projects.",
+      usesPhilosophy: "Clean component architecture, type-safety with TypeScript, modern database ORMs, and lightweight reactive state.",
       blogUrl: "",
-      aboutCtaTitle: "",
-      noticePeriod: "",
-      workAuthorization: "",
-      relocationTargets: "",
-      englishLevel: "",
-      meetingUrl: "",
-      availabilityHours: "",
+      aboutCtaTitle: "Let's build something useful",
+      noticePeriod: "Immediate / 15 days",
+      workAuthorization: "Open to local (Dhaka) and remote full-stack roles",
+      relocationTargets: "Dhaka · Remote Worldwide",
+      englishLevel: "English (Professional Working Proficiency)",
+      meetingUrl: "https://linkedin.com/in/razikuljoni",
+      availabilityHours: "Available Sunday to Thursday daily",
       seo: {
         author: env.siteName,
         title: "",
         keywords: [],
-        worksFor: { name: "", url: "" },
+        worksFor: { name: "HawkEyes Digital Monitoring Ltd.", url: "https://hawkeyesbd.com" },
         location: parseLocation(env.location),
       },
       links: {
@@ -481,33 +574,28 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
         youtube: env.youtube,
         email: `mailto:${env.email}`,
       },
-      navItems: [],
+      navItems: [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Experience", href: "/experience" },
+        { label: "Skills", href: "/skills" },
+        { label: "Projects", href: "/projects" },
+        { label: "Achievements", href: "/achievements" },
+        { label: "Research", href: "/research" },
+        { label: "Writing", href: "/posts" },
+        { label: "Contact", href: "/contact" },
+      ],
       navMenuItems: [],
-      socials: [],
-      experience: [],
-      featuredProjects: [],
-      achievements: [],
-      skills: [],
+      socials: defaultSocials,
+      experience: defaultExperiences,
+      featuredProjects: defaultFeaturedProjects,
+      achievements: defaultAchievements,
+      skills: defaultSkills,
       testimonials: [],
-      heroMetrics: [],
-      highlights: [],
-      languages: "",
-      bio: {
-        focusLabel: DEFAULT_FOCUS_LABEL,
-        short: DEFAULT_SHORT_BIO,
-        long: "",
-        intro: "",
-        story: "",
-        quote: "",
-        funFact: "",
-        researchStatement: DEFAULT_RESEARCH_STATEMENT,
-        roleInterests: "",
-        summary: "",
-        currentFocus: "",
-        currentlyBuilding: "",
-        seeking: "",
-        availability: "",
-      },
+      heroMetrics: defaultHeroMetrics,
+      highlights: ["Next.js & React 19", "Node.js & Express", "PostgreSQL & Drizzle ORM", "TypeScript", "Tailwind CSS v4"],
+      languages: "Bangla (Native), English (Professional)",
+      bio: defaultBioObj,
     };
   }
 }

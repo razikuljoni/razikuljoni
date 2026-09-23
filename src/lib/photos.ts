@@ -1,4 +1,4 @@
-import { db, galleryPhotos } from "../db";
+import { db, galleryPhotos, isRealDbConfigured } from "../db";
 import { asc } from "drizzle-orm";
 
 export interface PhotoExif {
@@ -21,6 +21,8 @@ export interface PhotoItem {
   categoryLabel?: string;
   location?: string;
   year?: string;
+  camera?: string;
+  lens?: string;
   story?: string;
   exif?: PhotoExif;
   aspect?: "square" | "wide" | "tall";
@@ -450,6 +452,7 @@ export const defaultPhotosList: PhotoItem[] = [
 ];
 
 export async function getPhotos(): Promise<PhotoItem[]> {
+  if (!isRealDbConfigured) return defaultPhotosList;
   try {
     const rows = await db.select().from(galleryPhotos).orderBy(asc(galleryPhotos.order));
     if (rows && rows.length > 0) {

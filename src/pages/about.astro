@@ -2,7 +2,7 @@
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getDynamicConfig } from "../lib/config";
-import { db, education, achievements, interests, certifications, bioContent, siteSettings } from "../db";
+import { getEducation, getAchievements, getInterests, getCertifications } from "../lib/loaders";
 import { strokeIcon } from "../lib/icons";
 import JsonLd from "../components/seo/JsonLd.astro";
 import { env } from "../lib/env";
@@ -10,30 +10,19 @@ import { env } from "../lib/env";
 const siteConfig = await getDynamicConfig();
 const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
 
-async function safe<T>(q: Promise<T>, fallback: T): Promise<T> {
-  try { return await q; } catch { return fallback; }
-}
-
-const [educationList, achievementsList, interestsList, certificationsList, bioData, settingsData] = await Promise.all([
-  safe(db.select().from(education).orderBy(education.order), [] as any[]),
-  safe(db.select().from(achievements).orderBy(achievements.order), [] as any[]),
-  safe(db.select().from(interests).orderBy(interests.order), [] as any[]),
-  safe(db.select().from(certifications).orderBy(certifications.order), [] as any[]),
-  safe(db.select().from(bioContent), [] as any[]),
-  safe(db.select().from(siteSettings), [] as any[]),
+const [educationList, achievementsList, interestsList, certificationsList] = await Promise.all([
+  getEducation(),
+  getAchievements(),
+  getInterests(),
+  getCertifications(),
 ]);
 
-const bio: Record<string, string> = {};
-for (const b of bioData as any[]) bio[b.key] = b.value;
-const settings: Record<string, string> = {};
-for (const s of settingsData as any[]) settings[s.key] = s.value;
-
-const author = settings.author || siteConfig.author;
-const bioIntro = settings.intro || bio.intro || siteConfig.bio?.intro || "";
-const bioStory = bio.story || siteConfig.bio?.story || "";
-const bioQuote = bio.quote || siteConfig.bio?.quote || "";
-const bioFunFact = bio.funFact || siteConfig.bio?.funFact || "";
-const aboutCtaTitle = settings.about_cta_title || "Let's build something useful";
+const author = siteConfig.author;
+const bioIntro = siteConfig.bio?.intro || "Jr. Full-Stack Developer";
+const bioStory = siteConfig.bio?.story || "";
+const bioQuote = siteConfig.bio?.quote || "";
+const bioFunFact = siteConfig.bio?.funFact || "";
+const aboutCtaTitle = siteConfig.aboutCtaTitle || "Let's build something useful";
 
 function formatDate(s?: string) {
   if (!s) return "Present";

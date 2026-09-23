@@ -12,8 +12,8 @@ const primaryEmail = siteConfig.email || "";
 const emails = (siteConfig.emails && siteConfig.emails.length > 0)
   ? siteConfig.emails
   : (primaryEmail ? [{ address: primaryEmail, href: `mailto:${primaryEmail}` }] : []);
-const author = siteConfig.author || "Swadhin Biswas";
-const title = siteConfig.bio?.intro || "Data / Backend Engineer";
+const author = siteConfig.author || "MD Razikul Islam Joni";
+const title = siteConfig.bio?.intro || "Jr. Full-Stack Developer";
 
 const [experiencesList, skillsList, educationList, projectsList] = await Promise.all([
   getExperiences(),

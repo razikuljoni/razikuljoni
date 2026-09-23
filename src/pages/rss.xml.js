@@ -1,8 +1,7 @@
 import rss from "@astrojs/rss";
 import { getDynamicConfig } from "../lib/config";
-const siteConfig = await getDynamicConfig();
-import { db, posts, projects } from "../db";
-import { desc, eq } from "drizzle-orm";
+import { db, posts, projects, isRealDbConfigured } from "../db";
+import { eq } from "drizzle-orm";
 
 function slugify(text) {
   return text
@@ -14,13 +13,20 @@ function slugify(text) {
 }
 
 export async function GET(context) {
-  // Fetch published posts
-  const blogPosts = await db.select().from(posts).where(eq(posts.draft, false));
+  const siteConfig = await getDynamicConfig();
 
-  // Fetch projects
-  const allProjects = await db.select().from(projects);
+  let blogPosts = [];
+  let allProjects = [];
 
-  // Combine and standardize
+  if (isRealDbConfigured) {
+    try {
+      blogPosts = await db.select().from(posts).where(eq(posts.draft, false));
+      allProjects = await db.select().from(projects);
+    } catch (err) {
+      console.warn("RSS DB fetch failed, using fallback empty feed:", err?.message || err);
+    }
+  }
+
   const items = [
     ...blogPosts.map((post) => ({
       title: post.title,
@@ -38,15 +44,14 @@ export async function GET(context) {
     })),
   ];
 
-  // Sort by date descending
   items.sort(
     (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime(),
   );
 
   return rss({
-    title: siteConfig.name,
-    description: siteConfig.description,
-    site: context.site,
+    title: siteConfig.name || "MD Razikul Islam Joni",
+    description: siteConfig.description || "Jr. Full-Stack Developer",
+    site: context.site || "https://razikuljoni.xyz",
     items: items,
     customData: `<language>en-us</language>`,
   });

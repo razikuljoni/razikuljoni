@@ -47,10 +47,11 @@ const fullTitle = title
   : `${author} | Portfolio, Engineering & Writing`;
 const pageDescription =
   description || siteConfig.description || env.siteDescription;
-const ogImage = image || `${siteConfig.url || env.siteUrl}/og-image.png`;
+const siteBaseUrl = siteConfig.url || env.siteUrl || "https://razikuljoni.xyz";
+const ogImage = image || `${siteBaseUrl}/og-image.png`;
 const canonicalURL = new URL(
   canonical || Astro.url.pathname,
-  siteConfig.url || env.siteUrl,
+  siteBaseUrl,
 ).toString();
 
 const kw = (keywords && keywords.length > 0

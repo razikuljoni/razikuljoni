@@ -6,12 +6,12 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: 'https://razikuljoni.xyz',
   output: 'static',
-  adapter: vercel(),
+  adapter: cloudflare(),
   integrations: [
     mdx({
       remarkPlugins: [remarkMath],
