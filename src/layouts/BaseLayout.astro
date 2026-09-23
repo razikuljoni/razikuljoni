@@ -4,6 +4,7 @@ import { getDynamicConfig } from "../lib/config";
 import { env } from "../lib/env";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
+import { getEducation, getCertifications } from "../lib/loaders";
 
 interface Props {
   title?: string;
@@ -35,10 +36,10 @@ const {
   wide = false,
 } = Astro.props;
 
-const [siteConfig, eduPromise, certPromise] = await Promise.all([
+const [siteConfig, eduRows, certRows] = await Promise.all([
   getDynamicConfig(),
-  import("../lib/loaders").then(({ getEducation }) => getEducation().catch(() => [])),
-  import("../lib/loaders").then(({ getCertifications }) => getCertifications().catch(() => [])),
+  getEducation().catch(() => []),
+  getCertifications().catch(() => []),
 ]);
 
 const author = authorName || siteConfig.author || env.siteName;
@@ -71,8 +72,7 @@ const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").rep
 
 let alumniOf: unknown[] = [];
 try {
-  const eduRows = await eduPromise;
-  alumniOf = eduRows.map((e: any) => ({
+  alumniOf = (eduRows || []).map((e: any) => ({
     "@type": "CollegeOrUniversity",
     name: e.institution,
   }));
@@ -80,8 +80,7 @@ try {
 
 let credentials: unknown[] = [];
 try {
-  const certRows = await certPromise;
-  credentials = certRows.map((c: any) => ({
+  credentials = (certRows || []).map((c: any) => ({
     "@type": "EducationalOccupationalCredential",
     name: c.name,
     ...(c.url ? { url: c.url } : {}),
