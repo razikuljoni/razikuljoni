@@ -69,7 +69,8 @@
     "shiki": "^3.21.0",
     "tailwindcss": "^4.1.18",
     "tsx": "^4.23.15",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "wrangler": "^3.114.0"
   },
   "devDependencies": {},
   "pnpm": {
