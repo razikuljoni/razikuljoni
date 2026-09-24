@@ -7,5 +7,5 @@ cache
 local.db
 local.db-journal
 *.py
-*.mjs
+!astro.config.mjs
 *.svg

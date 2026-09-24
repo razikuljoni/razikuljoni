@@ -7,11 +7,14 @@ import rehypeKatex from 'rehype-katex';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
+import vercel from '@astrojs/vercel';
+
+const isVercel = !!process.env.VERCEL || process.env.VERCEL_ENV !== undefined;
 
 export default defineConfig({
   site: 'https://razikuljoni.xyz',
   output: 'static',
-  adapter: cloudflare(),
+  adapter: isVercel ? vercel() : cloudflare(),
   integrations: [
     mdx(),
     react({
