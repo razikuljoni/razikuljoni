@@ -138,6 +138,7 @@ Passionate **Full-Stack / MERN / Frontend Developer** based in **Dhaka, Banglade
 
 | Project | Tech Stack | Key Features | Repository |
 |:---|:---|:---|:---:|
+| **[Circuit-Retail-ERP](https://github.com/razikuljoni/Circuit-Retail-ERP)** | `Next.js` `React` `Prisma` `SQLite` `Tailwind` | Production-ready retail ERP — POS invoicing, stock ledger, expenses & live daily sales analytics. | [View Repo](https://github.com/razikuljoni/Circuit-Retail-ERP) |
 | **[SensorGrid](https://github.com/razikuljoni/SensorGrid)** | `Next.js` `WebSockets` `Zustand` `Tailwind` | Real-time IoT monitoring dashboard with live sensor visualization & WebSocket telemetry streaming. | [View Repo](https://github.com/razikuljoni/SensorGrid) |
 | **[Z Shop](https://github.com/razikuljoni/Z-Shop)** | `Next.js` `Express` `MongoDB` `Prisma` `NextAuth` | AI-assisted e-commerce platform featuring smart product recommendations & authentication flow. | [View Repo](https://github.com/razikuljoni/Z-Shop) |
 | **[InsightDoc](https://github.com/razikuljoni/InsightDoc)** | `NestJS` `PostgreSQL` `Prisma` `Docker` `Zod` | Enterprise RAG platform for PDF analytics with structured extraction & secure document processing. | [View Repo](https://github.com/razikuljoni/InsightDoc) |

@@ -14,7 +14,7 @@ const isVercel = !!process.env.VERCEL || process.env.VERCEL_ENV !== undefined;
 export default defineConfig({
   site: 'https://razikuljoni.xyz',
   output: 'static',
-  adapter: isVercel ? vercel() : cloudflare(),
+  adapter: isVercel ? vercel() : cloudflare({ session: false }),
   integrations: [
     mdx(),
     react({
