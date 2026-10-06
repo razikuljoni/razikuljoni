@@ -175,11 +175,11 @@ async function seed() {
     const experienceData = [
       {
         company: 'HawkEyes Digital Monitoring Ltd.',
-        role: 'Junior Frontend Developer',
+        role: 'Jr. Frontend Developer',
         url: 'https://hawkeyesbd.com',
         startDate: '2024-02-01',
         endDate: '2026-04-01',
-        details: 'Developed and maintained responsive dashboard features using Next.js, React, TypeScript, and Tailwind CSS. Integrated WebSockets and real-time state management (Zustand/Redux) for live telemetry and alert notifications. Built reusable UI components and optimized client-side performance.',
+        details: 'Architected and delivered responsive, high-performance web applications using React.js, Next.js, and TypeScript, translating complex Figma designs into accessible, pixel-perfect UI/UX interfaces.\nIntegrated complex REST APIs and WebSockets, utilizing Redux Toolkit, RTK Query, and Zustand for state management and seamless data synchronization.\nCollaborated closely with backend engineers, UX designers, and project stakeholders to establish API contracts, improve page load times, and ship features on schedule.\nEngineered reusable component systems and spearheaded frontend performance optimizations, boosting Core Web Vitals and user engagement across core web properties.',
         order: 0,
       }
     ];
@@ -241,6 +241,30 @@ async function seed() {
         featured: true,
         stars: 25,
         order: 3,
+      },
+      {
+        name: 'Nexora POS',
+        slug: 'nexora-pos',
+        description: 'Enterprise-grade, offline-first Point of Sale and predictive inventory management system built for high-throughput retail.',
+        url: 'https://nexora-pos-tau.vercel.app',
+        github: 'https://github.com/razikuljoni/nexora-pos',
+        image: null,
+        tags: JSON.stringify(['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Zustand']),
+        featured: true,
+        stars: 0,
+        order: 4,
+      },
+      {
+        name: 'Chronos Luxe 3D',
+        slug: 'chronos-3d',
+        description: 'WebGL luxury smartwatch experience featuring procedural 3D watch rendering, sapphire glass reflections, and 5-stage scroll choreography.',
+        url: 'https://chronos-3d-gamma.vercel.app',
+        github: 'https://github.com/razikuljoni/chronos-3d',
+        image: null,
+        tags: JSON.stringify(['Three.js', 'WebGL', 'TypeScript', 'React', 'Tailwind CSS']),
+        featured: true,
+        stars: 0,
+        order: 5,
       },
     ];
     for (const proj of projectsList) {

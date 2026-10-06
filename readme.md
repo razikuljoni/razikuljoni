@@ -140,20 +140,22 @@ Passionate **Full-Stack / MERN / Frontend Developer** based in **Dhaka, Banglade
 |:---|:---|:---|:---:|
 | **[Circuit-Retail-ERP](https://github.com/razikuljoni/Circuit-Retail-ERP)** | `Next.js` `React` `Prisma` `SQLite` `Tailwind` | Production-ready retail ERP — POS invoicing, stock ledger, expenses & live daily sales analytics. | [View Repo](https://github.com/razikuljoni/Circuit-Retail-ERP) |
 | **[SensorGrid](https://github.com/razikuljoni/SensorGrid)** | `Next.js` `WebSockets` `Zustand` `Tailwind` | Real-time IoT monitoring dashboard with live sensor visualization & WebSocket telemetry streaming. | [View Repo](https://github.com/razikuljoni/SensorGrid) |
-| **[Z Shop](https://github.com/razikuljoni/Z-Shop)** | `Next.js` `Express` `MongoDB` `Prisma` `NextAuth` | AI-assisted e-commerce platform featuring smart product recommendations & authentication flow. | [View Repo](https://github.com/razikuljoni/Z-Shop) |
-| **[InsightDoc](https://github.com/razikuljoni/InsightDoc)** | `NestJS` `PostgreSQL` `Prisma` `Docker` `Zod` | Enterprise RAG platform for PDF analytics with structured extraction & secure document processing. | [View Repo](https://github.com/razikuljoni/InsightDoc) |
+| **[Z Shop](https://github.com/razikuljoni/z-shop)** | `Next.js` `Express` `MongoDB` `Prisma` | Full-stack e-commerce platform with smart product recommendations & real-time order tracking. | [View Repo](https://github.com/razikuljoni/z-shop) |
+| **[InsightDoc](https://github.com/razikuljoni/insightdoc)** | `NestJS` `PostgreSQL` `Prisma` `Docker` | Enterprise RAG platform for PDF analytics with structured extraction & citation answers. | [View Repo](https://github.com/razikuljoni/insightdoc) |
+| **[Nexora POS](https://github.com/razikuljoni/nexora-pos)** | `Next.js` `TypeScript` `Zustand` `Tailwind` | Offline-first Point of Sale & predictive inventory management system for high-throughput retail. | [View Repo](https://github.com/razikuljoni/nexora-pos) |
+| **[Chronos 3D](https://github.com/razikuljoni/chronos-3d)** | `Three.js` `WebGL` `React` `Framer Motion` | WebGL luxury smartwatch experience with procedural 3D watch rendering & scroll choreography. | [View Repo](https://github.com/razikuljoni/chronos-3d) |
 <!-- FEATURED:END -->
 
 ---
 
 ## 💼 Experience
 
-#### **Junior Frontend Developer** — *HawkEyes Digital Monitoring Ltd.*
-> **Feb 2024 – Apr 2026** · Dhaka, Bangladesh
-- Engineered real-time web monitoring dashboards using **React**, **Next.js**, and **Tailwind CSS**.
-- Implemented **WebSockets** for live telemetry streaming and real-time device status tracking.
-- Managed global application state using **Zustand** and **Redux Toolkit** for smooth, low-latency UI performance.
-- Partnered with backend developers to integrate RESTful endpoints and ensure payload type-safety.
+#### **Jr. Frontend Developer** — *HawkEyes Digital Monitoring Ltd.*
+> **Feb 2024 – Apr 2026** · Uttara, Dhaka, Bangladesh · Full-time · On-site
+- Architected and delivered responsive, high-performance web applications using **React.js**, **Next.js**, and **TypeScript**, translating complex Figma designs into accessible, pixel-perfect UI/UX interfaces.
+- Integrated complex **REST APIs** and **WebSockets**, utilizing **Redux Toolkit**, **RTK Query**, and **Zustand** for state management and seamless data synchronization.
+- Collaborated closely with backend engineers, UX designers, and project stakeholders to establish API contracts, improve page load times, and ship features on schedule.
+- Engineered reusable component systems and spearheaded frontend performance optimizations, boosting Core Web Vitals and user engagement across core web properties.
 
 ---
 
