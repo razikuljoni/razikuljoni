@@ -1,5 +1,13 @@
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
+import dotenv from 'dotenv';
+import fs from 'fs';
+
+if (fs.existsSync('.env.local')) {
+  dotenv.config({ path: '.env.local' });
+} else {
+  dotenv.config();
+}
 import {
   siteSettings,
   socialLinks,
@@ -187,6 +195,18 @@ async function seed() {
     console.log('📁 Seeding projects...');
     const projectsList = [
       {
+        name: 'Circuit-Retail-ERP',
+        slug: 'circuit-retail-erp',
+        description: 'Production-ready retail operations suite — POS invoicing, inventory & stock ledger, expenses, and a live daily sales dashboard. Built for Dhaka-time retail.',
+        url: 'https://circuit-retail-erp.vercel.app',
+        github: 'https://github.com/razikuljoni/Circuit-Retail-ERP',
+        image: null,
+        tags: JSON.stringify(['Next.js', 'React', 'TypeScript', 'Prisma', 'SQLite', 'Tailwind CSS']),
+        featured: true,
+        stars: 0,
+        order: 0,
+      },
+      {
         name: 'SensorGrid',
         slug: 'sensorgrid',
         description: 'Real-Time IoT Monitoring Dashboard. Built with Next.js, TypeScript, Zustand, and WebSockets to process live telemetry streams with interactive Recharts visualizations and threshold alerts.',
@@ -196,7 +216,7 @@ async function seed() {
         tags: JSON.stringify(['Next.js', 'TypeScript', 'Zustand', 'WebSockets', 'Tailwind CSS', 'Recharts']),
         featured: true,
         stars: 12,
-        order: 0,
+        order: 1,
       },
       {
         name: 'Z Shop',
@@ -208,7 +228,7 @@ async function seed() {
         tags: JSON.stringify(['Next.js', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Prisma ORM', 'NextAuth.js', 'Tailwind CSS']),
         featured: true,
         stars: 18,
-        order: 1,
+        order: 2,
       },
       {
         name: 'InsightDoc',
@@ -220,7 +240,7 @@ async function seed() {
         tags: JSON.stringify(['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Prisma ORM', 'Docker', 'Tailwind CSS']),
         featured: true,
         stars: 25,
-        order: 2,
+        order: 3,
       },
     ];
     for (const proj of projectsList) {
@@ -326,7 +346,7 @@ async function seed() {
     const heroMetricsData = [
       { label: "Experience", value: "2+ yrs", sub: "HawkEyes Digital & Projects", order: 0 },
       { label: "Stack", value: "Full-Stack", sub: "Next.js, React & Node.js", order: 1 },
-      { label: "Projects", value: "3+", sub: "SensorGrid, Z Shop & InsightDoc", order: 2 },
+      { label: "Projects", value: "4+", sub: "Circuit-Retail-ERP, SensorGrid & Z Shop", order: 2 },
       { label: "Code Quality", value: "Type-Safe", sub: "TypeScript, Zod & Prisma", order: 3 },
     ];
     for (const m of heroMetricsData) {

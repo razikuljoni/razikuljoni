@@ -1096,6 +1096,7 @@ LANG_SHORT = {
 # ---------------------------------------------------------------------------
 PROJECTS = {
     "FEATURED": [
+        ("Circuit-Retail-ERP", "retail operations pos & erp suite"),
         ("SensorGrid", "real-time iot monitoring dashboard"),
         ("Z-Shop", "ai e-commerce platform"),
         ("InsightDoc", "enterprise rag platform for pdf analytics"),

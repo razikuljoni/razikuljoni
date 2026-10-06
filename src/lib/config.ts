@@ -141,6 +141,16 @@ const defaultExperiences = [
 
 const defaultFeaturedProjects = [
   {
+    name: "Circuit-Retail-ERP",
+    description: "Production-ready retail operations suite — POS invoicing, inventory & stock ledger, expenses, and a live daily sales dashboard.",
+    url: "https://circuit-retail-erp.vercel.app",
+    github: "https://github.com/razikuljoni/Circuit-Retail-ERP",
+    image: undefined,
+    tags: ["Next.js", "React", "TypeScript", "Prisma", "SQLite", "Tailwind CSS"],
+    featured: true,
+    stars: 0,
+  },
+  {
     name: "SensorGrid",
     description: "Real-Time IoT Dashboard for monitoring 10,000+ connected sensors with sub-second WebSocket updates and geospatial mapping.",
     url: "https://github.com/razikuljoni/sensorgrid",
