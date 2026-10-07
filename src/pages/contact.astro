@@ -213,11 +213,11 @@ const socials = (siteConfig.socials || []).filter((s) =>
           throw new Error(result.error || "Failed");
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       if (status) {
         status.classList.remove("hidden");
         status.className = "mt-4 p-4 rounded-md bg-[var(--color-danger)]/10 border border-[var(--color-danger)]/30 text-[var(--color-danger)] text-sm";
-        status.textContent = "✗ Something went wrong. Please email me directly.";
+        status.textContent = "✗ " + (err.message || "Something went wrong. Please email me directly.");
       }
     } finally {
       submitBtn.innerHTML = original;
