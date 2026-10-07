@@ -47,8 +47,9 @@ export async function cleanExpiredSessions(): Promise<void> {
 }
 
 export function verifyCredentials(username: string, password: string): boolean {
-  const adminUsername = import.meta.env.ADMIN_USERNAME || process.env.ADMIN_USERNAME;
-  const adminPassword = import.meta.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD;
+  const getEnv = (key: string) => (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env[key] : undefined) || (typeof process !== 'undefined' ? process.env[key] : undefined);
+  const adminUsername = getEnv('ADMIN_USERNAME');
+  const adminPassword = getEnv('ADMIN_PASSWORD');
   
   if (!adminUsername || !adminPassword) return false;
   

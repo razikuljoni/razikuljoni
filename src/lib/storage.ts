@@ -1,10 +1,12 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 
-const accountId = import.meta.env.R2_ACCOUNT_ID || process.env.R2_ACCOUNT_ID;
-const accessKeyId = import.meta.env.R2_ACCESS_KEY_ID || process.env.R2_ACCESS_KEY_ID;
-const secretAccessKey = import.meta.env.R2_SECRET_ACCESS_KEY || process.env.R2_SECRET_ACCESS_KEY;
-const bucketName = import.meta.env.R2_BUCKET_NAME || process.env.R2_BUCKET_NAME;
-const publicUrl = import.meta.env.R2_PUBLIC_URL || process.env.R2_PUBLIC_URL;
+const getEnv = (key: string) => (typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env[key] : undefined) || (typeof process !== 'undefined' ? process.env[key] : undefined);
+
+const accountId = getEnv('R2_ACCOUNT_ID');
+const accessKeyId = getEnv('R2_ACCESS_KEY_ID');
+const secretAccessKey = getEnv('R2_SECRET_ACCESS_KEY');
+const bucketName = getEnv('R2_BUCKET_NAME');
+const publicUrl = getEnv('R2_PUBLIC_URL');
 
 if (!accountId || !accessKeyId || !secretAccessKey || !bucketName) {
     console.warn('[Storage] R2 credentials missing — uploads will fail');
