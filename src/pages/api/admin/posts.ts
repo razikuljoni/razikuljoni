@@ -99,6 +99,8 @@ export const PUT: APIRoute = async ({ request }) => {
     }
     if (body.tags !== undefined) setData.tags = JSON.stringify(Array.isArray(body.tags) ? body.tags : []);
     if (body.newSlug && body.newSlug !== slug) setData.slug = body.newSlug;
+    // The dashboard sends publishedAt as an ISO string; drizzle timestamp mode needs a Date
+    if (setData.publishedAt !== undefined) setData.publishedAt = new Date(setData.publishedAt);
 
     const result = await db.update(posts).set(setData).where(eq(posts.slug, slug)).returning();
     purgeSiteCaches().catch(() => {});
