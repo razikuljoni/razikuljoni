@@ -11,7 +11,7 @@ const e = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.
 export const env = {
   siteUrl: (e.PUBLIC_SITE_URL as string | undefined)?.replace(/\/$/, "") || "https://razikuljoni.xyz",
   siteName: (e.PUBLIC_SITE_NAME as string | undefined) || "MD Razikul Islam Joni",
-  siteDescription: (e.PUBLIC_SITE_DESCRIPTION as string | undefined) || "Jr. Full-Stack Developer | Next.js, React, Node.js, PostgreSQL",
+  siteDescription: (e.PUBLIC_SITE_DESCRIPTION as string | undefined) || "Product-minded full-stack developer in Dhaka building enterprise dashboards, scalable Node.js and PostgreSQL APIs, and polished React and Next.js experiences.",
   email: (e.PUBLIC_EMAIL as string | undefined) || "razikuljoni@gmail.com",
   location: (e.PUBLIC_LOCATION as string | undefined) || "",
   timezone: (e.PUBLIC_TIMEZONE as string | undefined) || "",

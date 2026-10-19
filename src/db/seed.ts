@@ -94,7 +94,7 @@ async function seed() {
     console.log('📝 Seeding site settings...');
     const settingsData = [
       { key: 'site_name', value: 'MD Razikul Islam Joni' },
-      { key: 'site_description', value: 'Jr. Full-Stack Developer | Next.js, React, Node.js, PostgreSQL' },
+      { key: 'site_description', value: 'Product-minded full-stack developer in Dhaka building enterprise dashboards, scalable Node.js and PostgreSQL APIs, and polished React and Next.js experiences.' },
       { key: 'site_url', value: 'https://razikuljoni.xyz' },
       { key: 'author', value: 'MD Razikul Islam Joni' },
       { key: 'email', value: 'razikuljoni@gmail.com' },
