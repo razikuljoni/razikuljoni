@@ -4,7 +4,7 @@
     "accessibility": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "bffe3d08cfe92ebad63699f74ce29e35c19850ebfbf474c1463183cfe34d6a09"
+      "computedHash": "2174f783a038a7ca4869c4c18e14726ec13b9c6b705d59253f647d0ca37cb78d"
     },
     "astro": {
       "source": "astrolicious/agent-skills",
@@ -14,7 +14,7 @@
     "cloudflare": {
       "source": "cloudflare/skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "ed01e97370f2c5060338ebef9189ac5f7652addf325e1ec4b9b30ed9653122c2"
+      "computedHash": "4d6a83421587be79602210c00c15475bb1f7e0fe9715935f15b473fea7351ec9"
     },
     "cloudflare-deploy": {
       "source": "openai/skills",
@@ -34,22 +34,22 @@
     "drizzle": {
       "source": "bobmatnyc/claude-mpm-skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "ee38c0b7737febd7409d84e613099a0f276e215e0bbda418b2593786ea8a4754"
+      "computedHash": "329c51bff48a92ddc4668c0396104ef47615db01b12ca894c2b322cbba19c0f0"
     },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "82fb11a63fb1e35ee2469516ed02d54695f783115b1540c0e783197af4240a3a"
+      "computedHash": "a4e6516a601f72ffd8bcd0d64609e8ba724d2ce92569a059a6890a5caadf072b"
     },
     "nodejs-backend-patterns": {
       "source": "wshobson/agents",
       "sourceType": "autoskills-registry",
-      "computedHash": "710a5e6f83c46e8f6c43356df55c143a7375c4414559a581654ce51709138c55"
+      "computedHash": "ec099fc7d7ece12e8a89c24b12eff36f27dd243db15c5a70f3df8406ec9c738e"
     },
     "nodejs-best-practices": {
       "source": "sickn33/antigravity-awesome-skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "7361ab02fb6b09913e3bdd9cf61c629ed6c17de9485e6a781054e5d437ccfc29"
+      "computedHash": "2c543ab51c9c4093c8a94aa615f39ca55d93835816aeeaa5bbd89261d85c584c"
     },
     "react-best-practices": {
       "source": "vercel-labs/agent-skills",
@@ -59,7 +59,7 @@
     "seo": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "c184da724d1c61ad077f27418ea8e7e88fd54bcdf98165e18be7e4681cbd5e20"
+      "computedHash": "7495da57766c99f787a729d4a21234ecb5d29d90f304a0d9a5996dcdc1eec048"
     },
     "tailwind-css-patterns": {
       "source": "giuseppe-trisciuoglio/developer-kit",
@@ -69,22 +69,22 @@
     "typescript-advanced-types": {
       "source": "wshobson/agents",
       "sourceType": "autoskills-registry",
-      "computedHash": "5ca0e177c6aaaba1889255691224daafdb7d71f317cc70bede1590d3907ded42"
+      "computedHash": "cb5d18bc19191b388cc49c15ff98dcbc714fa343373d078be00833e8a18ef291"
     },
     "web-perf": {
       "source": "cloudflare/skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "02a46c6d1c10070034f6030f2e208bb306b14b04e535d3990ca4310b907e91a5"
+      "computedHash": "11a1e86ab32c0acedcb291f159a75fd22c15e251bbd85e7db1bc9ef86e6371e8"
     },
     "workers-best-practices": {
       "source": "cloudflare/skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "9661260d852b07de738dd870fc92606b2a44c091b0e5c0df785ae097c26dc382"
+      "computedHash": "6b7003971822236bb9e4ab8cb623276442c93de29f844acb519a94c8a6fac2ec"
     },
     "wrangler": {
       "source": "cloudflare/skills",
       "sourceType": "autoskills-registry",
-      "computedHash": "d9a05896e7ef591d4c499436ce0a53c510800832de30de866b2c2999efe3f622"
+      "computedHash": "0ed898a7205a09839dbf279d0759f4ab3f07d45189b216383a813e6e8179b09d"
     }
   }
 }
