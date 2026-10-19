@@ -27,9 +27,9 @@ export const GET: APIRoute = async ({ params }) => {
     kicker: cat?.label || "Project",
     title: project.name,
     description: project.description || "",
-    meta: [`★ ${(project.stars || 0).toLocaleString()} stars`, "razikuljoni.xyz"],
+    meta: [`★ ${(project.stars || 0).toLocaleString()} stars`, "razikuljoni.vercel.app"],
     tags,
-    footer: "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.xyz",
+    footer: "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.vercel.app",
   });
 
   return new Response(svg, {

@@ -35,7 +35,7 @@ interface BlogPost {
 }
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.vercel.app").replace(/\/$/, "");
 const blogOrigin = (siteConfig.blogUrl || "https://blog.razikuljoni.xyz").replace(/\/$/, "");
 
 let cachedPosts: BlogPost[] | null = null;
@@ -166,7 +166,7 @@ const schema = {
 };
 ---
 
-<BaseLayout title="Blog" description="Essays on systems, ML infrastructure, and engineering practice by Swadhin Biswas.">
+<BaseLayout title="Blog" description="Essays on systems, ML infrastructure, and engineering practice by MD Razikul Islam Joni.">
   <JsonLd slot="head" schema={schema} />
 
   <section class="screen-line-after">

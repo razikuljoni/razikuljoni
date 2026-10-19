@@ -22,7 +22,7 @@ export function ogSvg(o: OgOptions): string {
   const title = esc(o.title).slice(0, 40);
   const description = esc(o.description).slice(0, 110);
   const kicker = esc(o.kicker).slice(0, 30);
-  const footer = esc(o.footer || "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.xyz");
+  const footer = esc(o.footer || "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.vercel.app");
   const meta = (o.meta || []).slice(0, 4).map(esc);
   const tags = (o.tags || []).slice(0, 3).map(esc);
 

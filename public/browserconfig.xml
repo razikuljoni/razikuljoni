@@ -3,9 +3,9 @@
   <msapplication>
     <tile>
       <square70x70logo src="/favicon-64x64.png"/>
-      <square150x150logo src="/icon-192.png"/>
-      <wide310x150logo src="/icon-192.png"/>
-      <TileColor>#0A0A12</TileColor>
+      <square150x150logo src="/favicon-192x192.png"/>
+      <wide310x150logo src="/og-image.png"/>
+      <TileColor>#0A0A0B</TileColor>
     </tile>
   </msapplication>
 </browserconfig>

@@ -52,11 +52,10 @@ const gallery = (() => { try { return JSON.parse(project.gallery || "[]"); } cat
 const projectDate = project.projectDate || project.createdAt || new Date().toISOString();
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || "https://razikuljoni.xyz").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || "https://razikuljoni.vercel.app").replace(/\/$/, "");
 const canonicalUrl = `${siteUrl}/projects/${slug}/`;
-// Per-project branded OG image (SVG route); falls back to the site default
-const ogImage = `${siteUrl}/api/og/${slug}.svg`;
-const twitterImage = project.image || `${siteUrl}/og-image.png`;
+// Site-wide raster OG image (PNG) — social platforms do not render SVG previews
+const ogImage = `${siteUrl}/og-image.png`;
 const publishedIso = new Date(projectDate).toISOString();
 const tagKeywords = (Array.isArray(tags) ? tags : [])
   .map((t: unknown) => String(t).trim())
@@ -158,7 +157,6 @@ const relatedProjects = (await getProjects())
   wide
 >
   <Fragment slot="head">
-    <meta name="twitter:image" content={twitterImage} />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <meta property="article:published_time" content={publishedIso} />
   </Fragment>

@@ -32,7 +32,7 @@ export async function GET(context) {
       title: post.title,
       pubDate: post.publishedAt,
       description: post.description,
-      link: `/blog/${post.slug}/`,
+      link: `/posts/${post.slug}/`,
       content: post.content,
     })),
     ...allProjects.map((project) => ({
@@ -51,7 +51,7 @@ export async function GET(context) {
   return rss({
     title: siteConfig.name || "MD Razikul Islam Joni",
     description: siteConfig.description || "Jr. Full-Stack Developer",
-    site: context.site || "https://razikuljoni.xyz",
+    site: context.site || "https://razikuljoni.vercel.app",
     items: items,
     customData: `<language>en-us</language>`,
   });

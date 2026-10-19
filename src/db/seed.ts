@@ -95,7 +95,7 @@ async function seed() {
     const settingsData = [
       { key: 'site_name', value: 'MD Razikul Islam Joni' },
       { key: 'site_description', value: 'Product-minded full-stack developer in Dhaka building enterprise dashboards, scalable Node.js and PostgreSQL APIs, and polished React and Next.js experiences.' },
-      { key: 'site_url', value: 'https://razikuljoni.xyz' },
+      { key: 'site_url', value: 'https://razikuljoni.vercel.app' },
       { key: 'author', value: 'MD Razikul Islam Joni' },
       { key: 'email', value: 'razikuljoni@gmail.com' },
       { key: 'location', value: 'Dhaka, Bangladesh' },

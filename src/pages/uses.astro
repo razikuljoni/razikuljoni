@@ -8,7 +8,7 @@ import { env } from "../lib/env";
 import GithubGraph from "../components/home/GithubGraph";
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.vercel.app").replace(/\/$/, "");
 const author = siteConfig.author || "MD Razikul Islam Joni";
 const githubUrl = siteConfig.links?.github || "https://github.com/razikuljoni";
 const githubUsername = githubUrl.split("/").pop() || "razikuljoni";

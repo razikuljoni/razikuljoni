@@ -45,7 +45,7 @@ pnpm run deploy          # Deploy to Vercel (vercel --prod)
 
 Create `.env` or `.env.local` using `.env.example`:
 
-- `PUBLIC_SITE_URL`: `https://razikuljoni.xyz`
+- `PUBLIC_SITE_URL`: `https://razikuljoni.vercel.app`
 - `PUBLIC_SITE_NAME`: `MD Razikul Islam Joni`
 - `PUBLIC_SITE_DESCRIPTION`: `Product-minded full-stack developer in Dhaka building enterprise dashboards, scalable Node.js and PostgreSQL APIs, and polished React and Next.js experiences.`
 - `PUBLIC_EMAIL`: `razikuljoni@gmail.com`

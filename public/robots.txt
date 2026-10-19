@@ -3,5 +3,5 @@ Disallow: /cat/
 Disallow: /api/cat/
 Allow: /
 
-Sitemap: https://razikuljoni.xyz/sitemap-index.xml
-Sitemap: https://razikuljoni.xyz/google-news.xml
+Sitemap: https://razikuljoni.vercel.app/sitemap-index.xml
+Sitemap: https://razikuljoni.vercel.app/google-news.xml

@@ -26,10 +26,10 @@ export const GET: APIRoute = async ({ params }) => {
     description: post.description || "",
     meta: [
       new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", year: "numeric" }),
-      "razikuljoni.xyz",
+      "razikuljoni.vercel.app",
     ],
     tags,
-    footer: "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.xyz",
+    footer: "MD Razikul Islam Joni · Jr. Full-Stack Developer · razikuljoni.vercel.app",
   });
 
   return new Response(svg, {

@@ -8,7 +8,7 @@ import JsonLd from "../components/seo/JsonLd.astro";
 import { env } from "../lib/env";
 
 const siteConfig = await getDynamicConfig();
-const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.xyz").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.vercel.app").replace(/\/$/, "");
 
 const [educationList, achievementsList, interestsList, certificationsList] = await Promise.all([
   getEducation(),

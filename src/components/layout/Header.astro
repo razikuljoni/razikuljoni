@@ -3,11 +3,11 @@ import { getDynamicConfig } from "../../lib/config";
 
 const siteConfig = await getDynamicConfig();
 const pathname = Astro.url.pathname;
-const author = siteConfig.author || "Swadhin Biswas";
+const author = siteConfig.author || "MD Razikul Islam Joni";
 
 const nameParts = author.split(" ");
 const initials = nameParts.map((p) => p[0]).join("").slice(0, 2).toUpperCase();
-const role = siteConfig.bio?.intro || "Data / Backend Engineer";
+const role = siteConfig.bio?.intro || "Jr. Full-Stack Developer";
 
 const rawNav = siteConfig.navItems || [];
 const rawCreative = siteConfig.creativeNavItems || [];

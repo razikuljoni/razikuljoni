@@ -14,7 +14,7 @@ if (!slug) return Astro.redirect("/404");
 
 const siteConfig = await getDynamicConfig();
 const blogOrigin = (siteConfig.blogUrl || "https://blog.razikuljoni.xyz").replace(/\/$/, "");
-const siteUrl = (siteConfig.url || "https://razikuljoni.xyz").replace(/\/$/, "");
+const siteUrl = (siteConfig.url || "https://razikuljoni.vercel.app").replace(/\/$/, "");
 
 // 1. Local post from the admin dashboard?
 let post: any = null;
@@ -26,7 +26,7 @@ try {
 // 2. External link → 301 to the article
 if (post?.externalUrl) return Astro.redirect(post.externalUrl, 301);
 
-// 3. Not a local post → maybe it's a blog.swadhin.cv post
+// 3. Not a local post → maybe it lives on the external blog
 if (!post) return Astro.redirect(`${blogOrigin}/blog/${slug}/`, 301);
 
 // 4. Local post with content → render it here
@@ -64,7 +64,7 @@ const formatDate = (date: any) =>
   new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 ---
 
-<BaseLayout title={post.title} description={post.description} image={`${siteUrl}/api/og/posts/${slug}.svg`} ogType="article" canonical={`/posts/${slug}/`}>
+<BaseLayout title={post.title} description={post.description} ogType="article" canonical={`/posts/${slug}/`}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <meta property="article:published_time" content={publishedIso} />
