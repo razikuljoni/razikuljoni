@@ -3,6 +3,8 @@ import { getDynamicConfig } from "../lib/config";
 import { db, posts, projects, isRealDbConfigured } from "../db";
 import { eq } from "drizzle-orm";
 
+export const prerender = false;
+
 function slugify(text) {
   return text
     .toLowerCase()
