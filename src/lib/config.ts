@@ -1,4 +1,5 @@
 // Dynamic configuration loader: DB → .env → empty string
+import { eq } from "drizzle-orm";
 import {
   db,
   siteSettings,
@@ -364,6 +365,21 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       ? settings.seo_keywords.split(",").map((k) => k.trim())
       : [];
 
+    // Resolve meeting URL with automatic migration for legacy LinkedIn URLs
+    const rawMeetingUrl = cleanValue(settings.meeting_url);
+    const isLegacyLinkedInMeeting = !rawMeetingUrl || /linkedin\.com/i.test(rawMeetingUrl);
+    const resolvedMeetingUrl = !isLegacyLinkedInMeeting
+      ? rawMeetingUrl
+      : (env.meetingUrl && !/linkedin\.com/i.test(env.meetingUrl) ? env.meetingUrl : "https://cal.com/razikuljoni/15min");
+
+    // Self-healing migration for databases seeded prior to Cal.com update
+    if (rawMeetingUrl && /linkedin\.com/i.test(rawMeetingUrl)) {
+      db.update(siteSettings)
+        .set({ value: resolvedMeetingUrl, updatedAt: new Date().toISOString() })
+        .where(eq(siteSettings.key, "meeting_url"))
+        .catch(() => {});
+    }
+
     // Build config — DB first, .env as fallback, empty string last
     const config: DynamicSiteConfig = {
       name: settings.site_name || env.siteName,
@@ -386,7 +402,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       workAuthorization: cleanValue(settings.work_authorization) || "Open to local (Dhaka) and remote full-stack roles",
       relocationTargets: cleanValue(settings.relocation_targets) || "Dhaka · Remote Worldwide",
       englishLevel: cleanValue(settings.english_level) || "English (Professional Working Proficiency)",
-      meetingUrl: cleanValue(settings.meeting_url) || env.meetingUrl || "https://cal.com/razikuljoni/15min",
+      meetingUrl: resolvedMeetingUrl,
       availabilityHours: cleanValue(settings.availability_hours) || "Available Sunday to Thursday daily",
 
       seo: {
@@ -568,7 +584,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       workAuthorization: "Open to local (Dhaka) and remote full-stack roles",
       relocationTargets: "Dhaka · Remote Worldwide",
       englishLevel: "English (Professional Working Proficiency)",
-      meetingUrl: env.meetingUrl || "https://cal.com/razikuljoni/15min",
+      meetingUrl: (env.meetingUrl && !/linkedin\.com/i.test(env.meetingUrl)) ? env.meetingUrl : "https://cal.com/razikuljoni/15min",
       availabilityHours: "Available Sunday to Thursday daily",
       seo: {
         author: env.siteName,

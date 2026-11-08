@@ -8,7 +8,7 @@ const authToken = (typeof import.meta !== 'undefined' && import.meta.env ? impor
 export const isRealDbConfigured = Boolean(
   rawUrl &&
   !rawUrl.includes('dummy') &&
-  (rawUrl.startsWith('libsql:') || rawUrl.startsWith('https:') || rawUrl.startsWith('http:') || rawUrl.startsWith('wss:') || rawUrl.startsWith('ws:'))
+  (rawUrl.startsWith('libsql:') || rawUrl.startsWith('https:') || rawUrl.startsWith('http:') || rawUrl.startsWith('wss:') || rawUrl.startsWith('ws:') || rawUrl.startsWith('file:'))
 );
 
 let dbUrl = isRealDbConfigured ? (rawUrl as string) : 'https://dummy.turso.io';

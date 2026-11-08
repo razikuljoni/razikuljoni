@@ -12,6 +12,7 @@
     "db:push": "TURSO_DATABASE_URL=\"file:local.db\" drizzle-kit push",
     "db:seed": "TURSO_DATABASE_URL=\"file:local.db\" tsx src/db/seed.ts",
     "db:studio": "drizzle-kit studio",
+    "db:migrate-meeting-url": "tsx scripts/migrate-meeting-url.ts",
     "deploy": "vercel --prod",
     "push:env": "tsx scripts/push-env.ts",
     "mcp:build": "pnpm --prefix mcp run build",
