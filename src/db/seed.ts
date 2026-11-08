@@ -106,15 +106,15 @@ async function seed() {
       { key: 'works_for_url', value: 'https://hawkeyesbd.com' },
       { key: 'github_update_secret', value: process.env.CRON_SECRET || 'secret_key_change_me' },
       { key: 'profile_image', value: '/profile.webp' },
-      { key: 'sidebar_tagline', value: 'Jr. Full-Stack Developer building modern web applications & real-time dashboards.' },
-      { key: 'footer_tagline', value: 'Built with Astro, React & Tailwind CSS v4.' },
-      { key: 'contact_blurb', value: 'Email or message me for opportunities in full-stack web development, React/Next.js frontend, or Node.js backend projects.' },
+      { key: 'sidebar_tagline', value: 'Product-minded full-stack developer building enterprise dashboards & APIs.' },
+      { key: 'footer_tagline', value: 'I build the quiet systems behind busy products.' },
+      { key: 'contact_blurb', value: "Bring the complexity. I'll bring the clarity. Email or schedule a 15-minute call for opportunities in full-stack web development, React/Next.js frontend, or Node.js backend systems." },
       { key: 'uses_philosophy', value: 'Clean component architecture, type-safety with TypeScript, modern database ORMs, and lightweight reactive state.' },
       { key: 'notice_period', value: 'Immediate / 15 days' },
       { key: 'work_authorization', value: 'Open to local (Dhaka) and remote full-stack roles' },
       { key: 'relocation_targets', value: 'Dhaka · Remote Worldwide' },
       { key: 'english_level', value: 'English (Professional Working Proficiency)' },
-      { key: 'meeting_url', value: 'https://linkedin.com/in/razikuljoni' },
+      { key: 'meeting_url', value: 'https://cal.com/razikuljoni/15min' },
       { key: 'availability_hours', value: 'Available Sunday to Thursday daily' },
     ];
 
@@ -177,9 +177,17 @@ async function seed() {
         company: 'HawkEyes Digital Monitoring Ltd.',
         role: 'Jr. Frontend Developer',
         url: 'https://hawkeyesbd.com',
+        companyDescription: 'Operational Monitoring & IoT Systems',
         startDate: '2024-02-01',
         endDate: '2026-04-01',
-        details: 'Architected and delivered responsive, high-performance web applications using React.js, Next.js, and TypeScript, translating complex Figma designs into accessible, pixel-perfect UI/UX interfaces.\nIntegrated complex REST APIs and WebSockets, utilizing Redux Toolkit, RTK Query, and Zustand for state management and seamless data synchronization.\nCollaborated closely with backend engineers, UX designers, and project stakeholders to establish API contracts, improve page load times, and ship features on schedule.\nEngineered reusable component systems and spearheaded frontend performance optimizations, boosting Core Web Vitals and user engagement across core web properties.',
+        details: 'Built the operational surfaces behind real business monitoring—where a small UI mistake can become a very large workflow problem. Architected and delivered responsive, high-performance web applications using React.js, Next.js, and TypeScript, translating complex Figma designs into accessible, pixel-perfect UI/UX interfaces.',
+        responsibilities: JSON.stringify([
+          'Operational products: Responsive enterprise dashboards, inventory systems, product tracking, reporting, and real-time field-work assignment interfaces.',
+          'Data architecture: REST API integration, JWT and role-based access, reusable query flows, Redux Toolkit, and RTK Query for complex application state.',
+          'Cross-team delivery: Partnered with backend engineers on API contracts, frontend data models, edge cases, Git workflows, and Vercel-based delivery.',
+          'Quality work: Improved responsiveness, accessibility, maintainability, and performance across data-intensive interfaces and multiple viewports.',
+        ]),
+        learnings: 'React.js, Redux Toolkit, RTK Query, Ant Design, Charts, Google Maps, GitHub Actions, Vercel',
         order: 0,
       }
     ];
@@ -199,9 +207,11 @@ async function seed() {
         slug: 'circuit-retail-erp',
         description: 'Production-ready retail operations suite — POS invoicing, inventory & stock ledger, expenses, and a live daily sales dashboard. Built for Dhaka-time retail.',
         url: 'https://circuit-retail-erp.vercel.app',
+        demoUrl: 'https://circuit-retail-erp.vercel.app',
         github: 'https://github.com/razikuljoni/Circuit-Retail-ERP',
         image: null,
         tags: JSON.stringify(['Next.js', 'React', 'TypeScript', 'Prisma', 'SQLite', 'Tailwind CSS']),
+        category: 'web',
         featured: true,
         stars: 0,
         order: 0,
@@ -209,11 +219,13 @@ async function seed() {
       {
         name: 'SensorGrid',
         slug: 'sensorgrid',
-        description: 'Real-Time IoT Monitoring Dashboard. Built with Next.js, TypeScript, Zustand, and WebSockets to process live telemetry streams with interactive Recharts visualizations and threshold alerts.',
-        url: 'https://github.com/razikuljoni/SensorGrid',
+        description: 'Production-grade IoT platform to connect physical devices, observe realtime sensor telemetry, control hardware remotely, and build visual automation workflows.',
+        url: 'https://sensor-grid-gamma.vercel.app',
+        demoUrl: 'https://sensor-grid-gamma.vercel.app',
         github: 'https://github.com/razikuljoni/SensorGrid',
         image: null,
-        tags: JSON.stringify(['Next.js', 'TypeScript', 'Zustand', 'WebSockets', 'Tailwind CSS', 'Recharts']),
+        tags: JSON.stringify(['Next.js 16', 'React 19', 'TypeScript', 'React Flow', 'Socket.io', 'Prisma', 'PostgreSQL']),
+        category: 'realtime-iot',
         featured: true,
         stars: 12,
         order: 1,
@@ -221,11 +233,13 @@ async function seed() {
       {
         name: 'Z Shop',
         slug: 'z-shop',
-        description: 'AI-Powered E-Commerce Platform. Full-stack store built with Next.js, Node.js, Express, MongoDB, Prisma ORM, and NextAuth.js featuring smart search, recommendation engines, and seamless checkout.',
-        url: 'https://github.com/razikuljoni/Z-Shop',
-        github: 'https://github.com/razikuljoni/Z-Shop',
+        description: 'Full-stack Amazon-scale e-commerce platform with real-time inventory, live order tracking, customer analytics, and an integrated Gemini AI Shopping Advisor.',
+        url: 'https://z-shop-online.vercel.app',
+        demoUrl: 'https://z-shop-online.vercel.app',
+        github: 'https://github.com/razikuljoni/z-shop',
         image: null,
-        tags: JSON.stringify(['Next.js', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Prisma ORM', 'NextAuth.js', 'Tailwind CSS']),
+        tags: JSON.stringify(['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Gemini AI', 'Recharts', 'Zod']),
+        category: 'web',
         featured: true,
         stars: 18,
         order: 2,
@@ -233,11 +247,13 @@ async function seed() {
       {
         name: 'InsightDoc',
         slug: 'insightdoc',
-        description: 'Enterprise RAG Platform for PDF Analytics. AI-driven document Q&A and analytics platform built with Next.js, NestJS, PostgreSQL, Prisma, Docker, and vector search capabilities.',
-        url: 'https://github.com/razikuljoni/InsightDoc',
-        github: 'https://github.com/razikuljoni/InsightDoc',
+        description: 'Autonomous RAG platform to ingest dense PDFs, interrogate them with streamed citation-grounded answers, and deep-link directly to source pages.',
+        url: 'https://insightdoc-nine.vercel.app',
+        demoUrl: 'https://insightdoc-nine.vercel.app',
+        github: 'https://github.com/razikuljoni/insightdoc',
         image: null,
-        tags: JSON.stringify(['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Prisma ORM', 'Docker', 'Tailwind CSS']),
+        tags: JSON.stringify(['Next.js 16', 'React 19', 'TypeScript', 'RAG / Embeddings', 'Prisma', 'Tailwind CSS']),
+        category: 'ai-rag',
         featured: true,
         stars: 25,
         order: 3,
@@ -247,9 +263,11 @@ async function seed() {
         slug: 'nexora-pos',
         description: 'Enterprise-grade, offline-first Point of Sale and predictive inventory management system built for high-throughput retail.',
         url: 'https://nexora-pos-tau.vercel.app',
+        demoUrl: 'https://nexora-pos-tau.vercel.app',
         github: 'https://github.com/razikuljoni/nexora-pos',
         image: null,
         tags: JSON.stringify(['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Zustand']),
+        category: 'web',
         featured: true,
         stars: 0,
         order: 4,
@@ -259,12 +277,70 @@ async function seed() {
         slug: 'chronos-3d',
         description: 'WebGL luxury smartwatch experience featuring procedural 3D watch rendering, sapphire glass reflections, and 5-stage scroll choreography.',
         url: 'https://chronos-3d-gamma.vercel.app',
+        demoUrl: 'https://chronos-3d-gamma.vercel.app',
         github: 'https://github.com/razikuljoni/chronos-3d',
         image: null,
         tags: JSON.stringify(['Three.js', 'WebGL', 'TypeScript', 'React', 'Tailwind CSS']),
+        category: 'web',
         featured: true,
         stars: 0,
         order: 5,
+      },
+      {
+        name: 'OpenPalette',
+        slug: 'openpalette',
+        description: 'Complete VS Code customization suite shipping 11 dark themes, 300+ file icons, 90+ folder icons, and language snippets.',
+        url: 'https://github.com/razikuljoni/OpenPalette',
+        demoUrl: 'https://marketplace.visualstudio.com',
+        github: 'https://github.com/razikuljoni/OpenPalette',
+        image: null,
+        tags: JSON.stringify(['TypeScript', 'VS Code API', 'GitHub Actions', 'Standard Version']),
+        category: 'tools',
+        featured: false,
+        stars: 5,
+        order: 6,
+      },
+      {
+        name: 'IgnoreGen',
+        slug: 'ignoregen',
+        description: 'Fast, customizable, and AI-powered .gitignore generator supporting 120+ stacks, frameworks, operating systems, and IDEs.',
+        url: 'https://ignoregen.vercel.app',
+        demoUrl: 'https://ignoregen.vercel.app',
+        github: 'https://github.com/razikuljoni/IgnoreGen',
+        image: null,
+        tags: JSON.stringify(['Next.js 15', 'React 19', 'TypeScript', 'Gemini AI', 'Tailwind CSS']),
+        category: 'tools',
+        featured: false,
+        stars: 7,
+        order: 7,
+      },
+      {
+        name: 'Shoppershala',
+        slug: 'shoppershala',
+        description: 'Production-minded commerce monorepo with dedicated buyer, seller, and admin workflows, wallet checkout, and in-app AI copilot.',
+        url: 'https://github.com/razikuljoni/shoppershala',
+        demoUrl: 'https://github.com/razikuljoni/shoppershala',
+        github: 'https://github.com/razikuljoni/shoppershala',
+        image: null,
+        tags: JSON.stringify(['React 19', 'Express.js', 'MongoDB', 'Zod', 'Docker']),
+        category: 'web',
+        featured: false,
+        stars: 4,
+        order: 8,
+      },
+      {
+        name: 'CoSketch',
+        slug: 'cosketch',
+        description: 'Collaborative realtime whiteboard treating canvas drawing as a synchronized multi-user event system with WebSockets.',
+        url: 'https://github.com/razikuljoni/CoSketch',
+        demoUrl: 'https://github.com/razikuljoni/CoSketch',
+        github: 'https://github.com/razikuljoni/CoSketch',
+        image: null,
+        tags: JSON.stringify(['Next.js', 'TypeScript', 'Node.js', 'WebSockets', 'PostgreSQL']),
+        category: 'realtime-iot',
+        featured: false,
+        stars: 6,
+        order: 9,
       },
     ];
     for (const proj of projectsList) {
@@ -292,8 +368,13 @@ async function seed() {
       { name: 'WebSockets', category: 'framework', description: 'Real-time bi-directional telemetry and notification feeds' },
       { name: 'Zustand & Redux Toolkit', category: 'framework', description: 'Client-side reactive state management' },
       { name: 'Docker', category: 'devops', description: 'Containerizing Node.js, NestJS, and frontend applications' },
+      { name: 'GitHub Actions & CI/CD', category: 'devops', description: 'Automated test runners, build pipelines, release automation, and Vercel deployments' },
       { name: 'NextAuth.js', category: 'framework', description: 'Authentication, OAuth providers, and JWT session handling' },
       { name: 'Zod', category: 'language', description: 'Schema validation for API inputs and runtime environment variables' },
+      { name: 'TanStack Query & RTK Query', category: 'framework', description: 'Server state management, caching, optimistic updates, and query deduplication' },
+      { name: 'Ant Design', category: 'framework', description: 'Enterprise UI design system and complex data tables for administrative portals' },
+      { name: 'Socket.io', category: 'framework', description: 'Real-time bidirectional event-based communication for IoT telemetry' },
+      { name: 'Gemini AI', category: 'ai-ml', description: 'Integrating LLM agents, context-aware advisors, and multimodal understanding' },
     ];
     for (let i = 0; i < skillsList.length; i++) {
       await db.insert(skills).values({
@@ -360,6 +441,17 @@ async function seed() {
         outcome: 'Solid theoretical knowledge coupled with practical full-stack project building skills.',
         order: 3,
       },
+      {
+        name: 'OpenPalette VS Code Customization Suite',
+        slug: 'openpalette-suite',
+        icon: 'palette',
+        year: '2024 - 2026',
+        description: 'Engineered comprehensive VS Code suite shipping 11 dark editor themes, 300+ file icons, and 90+ folder icons.',
+        url: 'https://github.com/razikuljoni/OpenPalette',
+        story: 'Built and published OpenPalette for developers worldwide, crafting high-contrast theme palettes and curated iconography with automated release pipelines.',
+        outcome: 'Over 390+ icons curated, 11 editor themes published, and automated GitHub Actions delivery.',
+        order: 4,
+      },
     ];
     for (const a of achievementsData) {
       await db.insert(achievements).values({ ...a, createdAt: now, updatedAt: now });
@@ -368,10 +460,10 @@ async function seed() {
     // 9. Hero Metrics
     console.log('📊 Seeding hero metrics...');
     const heroMetricsData = [
-      { label: "Experience", value: "2+ yrs", sub: "HawkEyes Digital & Projects", order: 0 },
-      { label: "Stack", value: "Full-Stack", sub: "Next.js, React & Node.js", order: 1 },
-      { label: "Projects", value: "4+", sub: "Circuit-Retail-ERP, SensorGrid & Z Shop", order: 2 },
-      { label: "Code Quality", value: "Type-Safe", sub: "TypeScript, Zod & Prisma", order: 3 },
+      { label: "Experience", value: "02+ yrs", sub: "HawkEyes Digital & Production", order: 0 },
+      { label: "Repositories", value: "123", sub: "Public GitHub Repos", order: 1 },
+      { label: "Themes Shipped", value: "11", sub: "OpenPalette Editor Themes", order: 2 },
+      { label: "Curated Icons", value: "390+", sub: "File & Folder Icons Shipped", order: 3 },
     ];
     for (const m of heroMetricsData) {
       await db.insert(heroMetrics).values({ ...m, createdAt: now, updatedAt: now });
@@ -380,14 +472,16 @@ async function seed() {
     // 10. Bio Content
     console.log('📝 Seeding bio content...');
     const bioData = [
-      { key: 'short', value: 'Jr. Full-Stack Developer specializing in Next.js, React, Node.js, and TypeScript.' },
-      { key: 'long', value: 'Junior Full-Stack Developer with experience building responsive web dashboards, real-time telemetry systems, and full-stack web applications. Skilled in React, Next.js, TypeScript, Node.js, Express, NestJS, and modern databases.' },
-      { key: 'intro', value: 'Jr. Full-Stack Developer building modern web applications, real-time dashboards, and scalable backend services.' },
-      { key: 'story', value: 'I am a Junior Full-Stack Developer based in Dhaka, Bangladesh. With hands-on experience at HawkEyes Digital Monitoring Ltd., I specialize in building responsive frontend dashboards using Next.js, React, and Tailwind CSS, as well as full-stack applications with Node.js, NestJS, PostgreSQL, and MongoDB. I focus on clean code, type-safety, and great user experiences.' },
-      { key: 'currentFocus', value: 'Next.js 15, NestJS, PostgreSQL, WebSockets, and RAG/AI applications.' },
-      { key: 'currentlyBuilding', value: 'InsightDoc and real-time WebSockets analytics tools.' },
-      { key: 'seeking', value: 'Full-Stack Developer or Junior Frontend/Backend roles in Dhaka or Remote.' },
-      { key: 'availability', value: 'Open for full-time & high-impact full-stack roles' },
+      { key: 'short', value: 'Product-minded full-stack developer. Two years inside real operational software taught me that the best interface is not the loudest one—it is the one that makes a complex workflow feel inevitable.' },
+      { key: 'long', value: 'Product-minded full-stack developer in Dhaka building enterprise dashboards, scalable Node.js and PostgreSQL APIs, and polished React and Next.js experiences. Skilled in React 19, Next.js, TypeScript, Node.js, Express, NestJS, and modern databases.' },
+      { key: 'intro', value: 'Product-minded full-stack developer' },
+      { key: 'story', value: 'Two years inside real operational software taught me that the best interface is not the loudest one. It is the one that makes a complex workflow feel inevitable. I work best where data-heavy workflows, reusable interface systems, and real business constraints meet. My recent work spans enterprise dashboards, inventory and product tracking, field-work assignment, reporting, role-based access, and API-driven operations. I care about the details users feel but rarely name: immediate feedback, predictable state, useful empty screens, resilient loading behavior, keyboard access, and code another developer can safely extend.' },
+      { key: 'currentFocus', value: 'Next.js 16, React 19, TypeScript, PostgreSQL, WebSockets, and RAG/AI applications.' },
+      { key: 'currentlyBuilding', value: 'InsightDoc, SensorGrid, and real-time operational dashboard tools.' },
+      { key: 'seeking', value: 'Full-stack roles (Onsite in Dhaka or Remote worldwide).' },
+      { key: 'availability', value: 'Available for full-stack roles / Onsite or Remote' },
+      { key: 'quote', value: 'A feature is not finished until the API contract, edge cases, and deployment story make sense.' },
+      { key: 'funFact', value: 'Music for focus, movies for new perspectives, long walks for the reset button. Curiosity travels well between code and everything else.' },
     ];
     for (const bio of bioData) {
       await db.insert(bioContent).values({ ...bio, createdAt: now, updatedAt: now }).onConflictDoNothing();
@@ -395,16 +489,35 @@ async function seed() {
 
     // 11. Education
     console.log('🎓 Seeding education...');
-    await db.insert(education).values({
-      institution: "Green University of Bangladesh",
-      degree: "B.Sc. in Computer Science and Engineering",
-      startDate: "2020-01-01",
-      endDate: "2023-12-31",
-      details: "Focused on web development, database management systems, algorithms, object-oriented programming, and software engineering.",
-      order: 0,
-      createdAt: now,
-      updatedAt: now,
-    });
+    const educationData = [
+      {
+        institution: "Green University of Bangladesh",
+        degree: "B.Sc. in Computer Science and Engineering",
+        startDate: "2020-01-01",
+        endDate: "2023-12-31",
+        details: "Focused on web development, database management systems, algorithms, object-oriented programming, and software engineering.",
+        order: 1,
+      },
+      {
+        institution: "Vashantek Government College",
+        degree: "Higher Secondary Certificate (HSC) · Science",
+        startDate: "2018-01-01",
+        endDate: "2020-01-01",
+        details: "Science concentration (Physics, Chemistry, Higher Mathematics, ICT).",
+        order: 2,
+      },
+      {
+        institution: "Programming Hero",
+        degree: "Web Development & Next Level Web Development",
+        startDate: "2020-01-01",
+        endDate: "2023-12-31",
+        details: "Comprehensive full-stack development covering modern JavaScript, React, Redux, Node.js, Express, MongoDB, TypeScript, Next.js, and backend architecture.",
+        order: 3,
+      },
+    ];
+    for (const edu of educationData) {
+      await db.insert(education).values({ ...edu, createdAt: now, updatedAt: now });
+    }
 
     // 12. Project Categories
     console.log('🗂️ Seeding project categories...');
@@ -412,9 +525,62 @@ async function seed() {
       { slug: 'web', label: 'Web Applications', short: 'Next.js & React Full-Stack apps', description: 'Responsive web apps, administrative dashboards, and client platforms.', order: 1 },
       { slug: 'realtime-iot', label: 'Real-Time & IoT', short: 'WebSockets & Telemetry dashboards', description: 'Real-time telemetry monitoring and live alert notification feeds.', order: 2 },
       { slug: 'ai-rag', label: 'AI & Document RAG', short: 'RAG PDF Analytics & Smart Search', description: 'Vector search, document Q&A, and AI-driven e-commerce engines.', order: 3 },
+      { slug: 'tools', label: 'Developer Tools', short: 'Extensions, CLI utilities & themes', description: 'Developer productivity tools, VS Code extensions, and generator suites.', order: 4 },
     ];
     for (let i = 0; i < categoriesData.length; i++) {
       await db.insert(projectCategories).values({ ...categoriesData[i], createdAt: now, updatedAt: now }).onConflictDoNothing();
+    }
+
+    // 12b. Certifications
+    console.log('📜 Seeding certifications...');
+    const certificationsData = [
+      {
+        name: 'Web Development & Next Level Web Development (both tracks)',
+        issuer: 'Programming Hero',
+        year: '2023',
+        url: 'https://web.programming-hero.com',
+        credentialId: 'PH-NLWD-2023',
+        order: 1,
+      },
+    ];
+    for (const c of certificationsData) {
+      await db.insert(certifications).values({ ...c, createdAt: now, updatedAt: now });
+    }
+
+    // 12c. Interests
+    console.log('💡 Seeding interests...');
+    const interestsData = [
+      {
+        name: 'Music for focus',
+        category: 'Creative',
+        description: 'Ambient, electronic, and lo-fi tracks for sustained deep work and coding flow.',
+        icon: 'music',
+        order: 1,
+      },
+      {
+        name: 'Movies for new perspectives',
+        category: 'Creative',
+        description: 'Cinema and visual storytelling that challenge assumptions and expand design perspectives.',
+        icon: 'film',
+        order: 2,
+      },
+      {
+        name: 'Long walks & open air',
+        category: 'Lifestyle',
+        description: 'Walking, fresh air, and new places as the reset button between complex code problems.',
+        icon: 'compass',
+        order: 3,
+      },
+      {
+        name: 'Quiet systems architecture',
+        category: 'Tech',
+        description: 'Designing calm, robust, and predictable software where complex workflows feel inevitable.',
+        icon: 'cpu',
+        order: 4,
+      },
+    ];
+    for (const item of interestsData) {
+      await db.insert(interests).values({ ...item, createdAt: now, updatedAt: now });
     }
 
     // 13. Uses

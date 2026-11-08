@@ -43,7 +43,7 @@ if (cached?.project) {
 }
 
 const categories = await getProjectCategories();
-const category = categories.find((c) => c.slug === (project.category || "data-engineering"));
+const category = categories.find((c) => c.slug === (project.category || "web"));
 
 const tags = (() => { try { return JSON.parse(project.tags || "[]"); } catch { return []; } })();
 const techStack = (() => { try { return JSON.parse(project.techStack || "[]"); } catch { return []; } })();

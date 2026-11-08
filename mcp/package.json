@@ -13,14 +13,14 @@
     "dev": "node src/index.ts"
   },
   "dependencies": {
-    "@libsql/client": "^0.17.2",
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "@upstash/redis": "^1.38.0",
+    "@libsql/client": "^0.17.4",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@upstash/redis": "^1.41.0",
     "dotenv": "^17.4.2",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^22.19.0",
+    "@types/node": "^22.20.5",
     "typescript": "^5.9.3"
   }
 }

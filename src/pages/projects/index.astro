@@ -46,12 +46,12 @@ const siteUrl = (siteConfig.url || env.siteUrl || "https://razikuljoni.vercel.ap
 const projectsByCategory = categories
   .map((cat) => ({
     ...cat,
-    items: allProjects.filter((p) => (p.category || "data-engineering") === cat.slug),
+    items: allProjects.filter((p) => (p.category || "web") === cat.slug),
   }))
   .filter((c) => c.items.length > 0);
 
 // Projects without a matching category land under a generic bucket
-const uncategorized = allProjects.filter((p) => !categories.some((c) => c.slug === (p.category || "data-engineering")));
+const uncategorized = allProjects.filter((p) => !categories.some((c) => c.slug === (p.category || "web")));
 
 const schema = {
   "@context": "https://schema.org",
