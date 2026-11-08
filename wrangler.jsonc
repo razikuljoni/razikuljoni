@@ -12,6 +12,14 @@
       "preview_id": "f7c26a5f838244b5911cf52b0133f912"
     }
   ],
+  "previews": {
+    "kv_namespaces": [
+      {
+        "binding": "SESSION",
+        "id": "f7c26a5f838244b5911cf52b0133f912"
+      }
+    ]
+  },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
