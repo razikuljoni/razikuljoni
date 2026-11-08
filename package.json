@@ -1,7 +1,7 @@
 {
   "name": "subsequent-solstice",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "packageManager": "pnpm@10.5.2",
   "scripts": {
     "dev": "NODE_OPTIONS='--no-deprecation' astro dev",

@@ -28,6 +28,7 @@ export const env = {
     ? `https://youtube.com/@${e.PUBLIC_YOUTUBE}`
     : "",
   gaId: (e.PUBLIC_GA_ID as string | undefined) || "",
+  meetingUrl: (e.PUBLIC_MEETING_URL as string | undefined) || "https://cal.com/razikuljoni/15min",
 };
 
 /**

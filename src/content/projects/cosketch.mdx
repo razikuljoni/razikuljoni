@@ -1,0 +1,27 @@
+---
+title: "CoSketch"
+description: "Collaborative realtime whiteboard treating canvas drawing as a synchronized multi-user event system with WebSockets."
+publishedAt: 2026-06-18
+tags: ["Next.js", "TypeScript", "Node.js", "WebSockets", "PostgreSQL"]
+github: "https://github.com/razikuljoni/CoSketch"
+demo: "https://github.com/razikuljoni/CoSketch"
+featured: false
+---
+
+# CoSketch
+
+CoSketch is a collaborative digital whiteboard engine that converts freehand drawing, vector shapes, and text annotations into an immutable stream of synchronized canvas events.
+
+## Key Features
+
+- **Multi-User Synchronized Canvas**: Low-latency multi-cursor tracking and live stroke broadcasting via WebSockets.
+- **Vector Object Serialization**: Canvas paths and primitives stored as discrete vector operations for infinite resolution and undo/redo histories.
+- **Room Management & Persistence**: Rooms backed by PostgreSQL for state snapshotting and persistent drawing sessions.
+- **Export Capabilities**: Clean raster (PNG) and vector (SVG) export functions.
+
+## Tech Stack
+
+- **Frontend**: Next.js, TypeScript, HTML5 Canvas
+- **Real-Time Engine**: Node.js, WebSockets (Socket.io)
+- **Database**: PostgreSQL
+

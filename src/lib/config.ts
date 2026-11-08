@@ -118,8 +118,8 @@ let cacheTimestamp: number = 0;
 let inFlightPromise: Promise<DynamicSiteConfig> | null = null;
 const CACHE_TTL = 300 * 1000; // 5 minute in-memory cache
 
-const DEFAULT_SHORT_BIO = "Jr. Full-Stack Developer with 2+ years of experience building modern web applications, real-time IoT dashboards, and scalable APIs.";
-const DEFAULT_FOCUS_LABEL = "Jr. Full-Stack Developer";
+const DEFAULT_SHORT_BIO = "Product-minded full-stack developer. Two years inside real operational software taught me that the best interface is not the loudest one—it is the one that makes a complex workflow feel inevitable.";
+const DEFAULT_FOCUS_LABEL = "Product-minded full-stack developer";
 const DEFAULT_RESEARCH_STATEMENT = "Focused on modern frontend performance optimization, scalable micro-backends, and real-time streaming architectures.";
 
 const defaultSocials = [
@@ -210,18 +210,18 @@ const defaultHeroMetrics = [
 const defaultBioObj = {
   focusLabel: DEFAULT_FOCUS_LABEL,
   short: DEFAULT_SHORT_BIO,
-  long: "Junior Full-Stack Developer specializing in Next.js, React, Node.js, Express, and PostgreSQL. Experienced in crafting high-performance dashboards, real-time WebSocket interfaces, and clean component architectures.",
-  intro: "Hi, I'm MD Razikul Islam Joni. I build web applications and digital experiences.",
-  story: "Passionate about full-stack engineering, clean code, and building products that solve real-world problems. Graduated with a B.Sc. in CSE from Green University of Bangladesh.",
-  quote: "First, solve the problem. Then, write the code.",
-  funFact: "Enthusiastic about open-source tools, system design, and building real-time interactive apps.",
+  long: "Product-minded full-stack developer in Dhaka building enterprise dashboards, scalable Node.js and PostgreSQL APIs, and polished React and Next.js experiences. Two years inside real operational software taught me that the best interface is the one that makes a complex workflow feel inevitable.",
+  intro: "Product-minded full-stack developer",
+  story: "Two years inside real operational software taught me that the best interface is not the loudest one. It is the one that makes a complex workflow feel inevitable. I work best where data-heavy workflows, reusable interface systems, and real business constraints meet. My recent work spans enterprise dashboards, inventory and product tracking, field-work assignment, reporting, role-based access, and API-driven operations. I care about the details users feel but rarely name: immediate feedback, predictable state, useful empty screens, resilient loading behavior, keyboard access, and code another developer can safely extend.",
+  quote: "A feature is not finished until the API contract, edge cases, and deployment story make sense.",
+  funFact: "Music for focus, movies for new perspectives, long walks for the reset button. Curiosity travels well between code and everything else.",
   researchStatement: DEFAULT_RESEARCH_STATEMENT,
   roleInterests: "Full-Stack Developer, Frontend Engineer (React/Next.js), Backend Developer (Node.js/Express)",
-  summary: "Jr. Full-Stack Developer based in Dhaka, Bangladesh.",
-  currentFocus: "Next.js 15, React 19, TypeScript, PostgreSQL & Micro-backends",
-  currentlyBuilding: "Full-stack portfolio and real-time dashboard components",
-  seeking: "Full-Time Full-Stack or Frontend Developer roles (Local Dhaka or Remote)",
-  availability: "Available immediately",
+  summary: "Product-minded full-stack developer based in Dhaka, Bangladesh.",
+  currentFocus: "Next.js 16, React 19, TypeScript, PostgreSQL, WebSockets, and RAG/AI applications",
+  currentlyBuilding: "InsightDoc, SensorGrid, and real-time operational dashboard tools",
+  seeking: "Full-stack roles (Onsite in Dhaka or Remote worldwide)",
+  availability: "Available for full-stack roles / Onsite or Remote",
 };
 
 /**
@@ -386,7 +386,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       workAuthorization: cleanValue(settings.work_authorization) || "Open to local (Dhaka) and remote full-stack roles",
       relocationTargets: cleanValue(settings.relocation_targets) || "Dhaka · Remote Worldwide",
       englishLevel: cleanValue(settings.english_level) || "English (Professional Working Proficiency)",
-      meetingUrl: cleanValue(settings.meeting_url) || "https://linkedin.com/in/razikuljoni",
+      meetingUrl: cleanValue(settings.meeting_url) || env.meetingUrl || "https://cal.com/razikuljoni/15min",
       availabilityHours: cleanValue(settings.availability_hours) || "Available Sunday to Thursday daily",
 
       seo: {
@@ -568,7 +568,7 @@ async function fetchDynamicConfig(): Promise<DynamicSiteConfig> {
       workAuthorization: "Open to local (Dhaka) and remote full-stack roles",
       relocationTargets: "Dhaka · Remote Worldwide",
       englishLevel: "English (Professional Working Proficiency)",
-      meetingUrl: "https://linkedin.com/in/razikuljoni",
+      meetingUrl: env.meetingUrl || "https://cal.com/razikuljoni/15min",
       availabilityHours: "Available Sunday to Thursday daily",
       seo: {
         author: env.siteName,
