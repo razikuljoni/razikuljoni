@@ -1621,7 +1621,7 @@ def _card_title(parts, card, title):
     parts.append(
         '<text x="{x}" y="{y}" text-anchor="middle" font-family="{font}" '
         'font-size="12" letter-spacing="4" fill="{fill}">{t}</text>'.format(
-            x=cx, y=ty + 4, font=MONO_FONT, fill=c["muted"], t=_xml_escape(title)
+            x=cx, y=ty + 4, font=MONO_FONT, fill=c["muted"], t=_xml_escape(title.upper())
         )
     )
 
@@ -1662,8 +1662,8 @@ def generate_hero_svg(today_stats, alltime, lang_data):
     c = COLORS
     now = datetime.datetime.now()
     date_label = "today · {}, {} {}".format(
-        now.strftime("%A").lower(), now.strftime("%b").lower(), now.strftime("%d %Y")
-    )
+        now.strftime("%A"), now.strftime("%b"), now.strftime("%d %Y")
+    ).replace("today", "Today")
 
     svg_w, svg_h = 1140, 560
     hero = {"x": 8, "y": 8, "w": 1124, "h": 276}
@@ -1686,7 +1686,7 @@ def generate_hero_svg(today_stats, alltime, lang_data):
 
     # ---- self-introduction (top) with a waving hand -------------------------
     # full name for ATS/search — last name matters
-    intro = "Hello, I am MD. Razikul Islam Joni"
+    intro = "Hello, I am MD Razikul Islam Joni"
     # 32px mono -> char ~19.2px; hand sits 28px to the right of the text end
     intro_w = len(intro) * 19.2
     parts.append(
@@ -1823,7 +1823,7 @@ def generate_hero_svg(today_stats, alltime, lang_data):
     track_w = segs * (seg_w + seg_gap) - seg_gap
     for i, (name, pct) in enumerate(lang_rows):
         y = 356 + i * 27
-        display = LANGUAGE_ALIASES.get(name.lower(), name.lower())[:16]
+        display = LANGUAGE_ALIASES.get(name.lower(), name.lower()).capitalize()[:16]
         is_python = name.lower() == "python"
         parts.append(
             '<text x="{x}" y="{y}" font-family="{font}" font-size="13" '
@@ -1862,31 +1862,31 @@ def generate_hero_svg(today_stats, alltime, lang_data):
             fill=c["card"], stroke=c["card_stroke"], **alt
         )
     )
-    _card_title(parts, alt, "all time")
+    _card_title(parts, alt, "ALL TIME")
     mid = alt["x"] + alt["w"] / 2
     cells = [
         (
-            "contributions",
+            "Contributions",
             "{:,}".format(alltime["contrib"]),
-            "net lines",
+            "Net lines",
             "+" + _abbrev_number(alltime["net_loc"]),
         ),
         (
-            "stars",
+            "Stars",
             "{:,}".format(alltime["stars"]),
-            "public repos",
+            "Public repos",
             "{:,}".format(alltime["repos"]),
         ),
         (
-            "followers",
+            "Followers",
             "{:,}".format(alltime["followers"]),
-            "longest streak",
+            "Longest streak",
             "{} days".format(alltime["streak"]),
         ),
         (
-            "dev score",
+            "Dev score",
             "{}/100 · {}".format(alltime["score"], alltime["rank"]),
-            "account age",
+            "Account age",
             _compact_age(alltime["age"]),
         ),
     ]
@@ -2096,20 +2096,12 @@ def rebuild_readme(
     # badge only — featured projects is a manual block outside TODAY
     block_html = (
         '<p align="center">\n'
-        '<img src="{}" width="100%" alt="MD Razikul Islam Joni - live GitHub dashboard"/>'.format(
+        '  <img src="{}" width="100%" alt="MD Razikul Islam Joni - live GitHub dashboard"/><br/>\n'.format(
             HERO_SVG_URL.format(u=USER_NAME)
         )
-        + "\n</p>\n\n"
-        + '<p align="center">\n'
-        + '<img src="{}" width="100%" alt="MD Razikul Islam Joni - contributions this '
-        'year and latest merged commit"/>'.format(CONTRIBS_SVG_URL.format(u=USER_NAME))
-        + "\n</p>\n\n"
-        + '<p align="center">\n'
-        + '<img src="https://komarev.com/ghpvc/?username={u}'
-        '&label=profile+views&color=0d1117&style=for-the-badge" '
-        'alt="profile views - live counter"/>\n</p>\n\n'.format(u=USER_NAME)
-        + "<!-- the badge above is real time: komarev increments it on every view.\n"
-        "     the hero and contribution SVGs refresh hourly via github actions. -->\n"
+        + '  <img src="{}" width="100%" alt="MD Razikul Islam Joni - contributions this '
+        'year and latest merged commit"/>\n'.format(CONTRIBS_SVG_URL.format(u=USER_NAME))
+        + "</p>"
     )
     update_readme(block_html)
 
